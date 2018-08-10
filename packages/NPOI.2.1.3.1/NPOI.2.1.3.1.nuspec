@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>NPOI</id>
+    <version>2.1.3.1</version>
+    <title>NPOI</title>
+    <authors>Tony Qu, Antony, Phil Rykoff</authors>
+    <owners>Tony Qu, Antony, Phil Rykoff</owners>
+    <licenseUrl>http://npoi.codeplex.com/license</licenseUrl>
+    <projectUrl>http://npoi.codeplex.com/</projectUrl>
+    <iconUrl>http://download-codeplex.sec.s-msft.com/Download?ProjectName=npoi&amp;DownloadId=155905&amp;Build=20959</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Neuzilla is the studio behind NPOI. For detail, you can check http://blog.neuzilla.com
+ 
+Neuzilla provides onsite/offsite hand-on training, troubleshooting and software customization. For details, please contact support@neuzilla.com
+
+This project is the .NET version of POI from Apache Foundation. NPOI can read and write xls (Excel 97-2003), xlsx(Excel 2007+) and docx(Word 2007+)</description>
+    <releaseNotes>Bug Fixes
+a. fix word serialization issues
+b. fix CloneStyleFrom issue
+c. Fix vertical alignment default value for XSSFCell
+d. fix setAutoFilter change range issue
+e. fix EDate function
+f. fix FormatException in FormulaParser
+g. fix Comment random Shape issue (comment serialization issue)
+h. fix not be able to unlock the cell issue 
+
+POI BUG FIXES
+55729 - DataFormatter should format Error cells, returning the Excel error string
+49237 - HSSF Row Style XfIndex is 12 not 16 bits of data
+54607 - NullPointerException in XSSFSheet.getTopRow() when the top row is 1
+55745 - fix handling of tables in XSSF if there are comments as well
+54673 - Simple wildcard support in HLOOKUP, VOOLKUP, MATCH, COUNTIF
+55047 - REPT formula support
+55042 - COMPLEX formula support
+55041 - CODE formula support
+54508 - EDATE formula support
+53966 - IfError support (from Analysis Toolpak)
+54402 - IfError handling of indirect references
+
+New feature
+a. Add ReplaceText to XWPFParagraph and XWPFRun
+b. adjust ExcelExtractor interface
+c. Improving comment missing handling in HSSFSheet
+d. copy hyperlink in CopySheet and fix some bugs
+e. Implement ChartSheet in OpenXmlFormats
+f. Implement shrinktofit for XSSF</releaseNotes>
+    <copyright>Neuzilla</copyright>
+    <tags>npoi xlsx xls Excel Word docx</tags>
+  </metadata>
+</package>

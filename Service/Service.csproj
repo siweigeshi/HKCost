@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A05C6236-632B-4CE1-B6BE-D3A2718F1A0B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Service</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="BLL">
+      <HintPath>..\packages\MVCFrameDll\BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Common">
+      <HintPath>..\packages\MVCFrameDll\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL">
+      <HintPath>..\packages\MVCFrameDll\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implements\BaseCode\BaseCodeBLL.cs" />
+    <Compile Include="Implements\Core\BasePositionBLL.cs" />
+    <Compile Include="Implements\Core\BaseRecoverBLL.cs" />
+    <Compile Include="Implements\InquiryManage\InquiryBLL.cs" />
+    <Compile Include="Implements\ParityManage\DealOrderBLL.cs" />
+    <Compile Include="Implements\ParityManage\ParityBLL.cs" />
+    <Compile Include="Implements\QouteManage\QuoteBLL.cs" />
+    <Compile Include="Implements\QouteManage\QuoteManageBLL.cs" />
+    <Compile Include="Implements\UserManager\UserManagerBLL.cs" />
+    <Compile Include="Interfaces\BaseCode\IBaseCodeBLL.cs" />
+    <Compile Include="Interfaces\Core\IBasePositionBLL.cs" />
+    <Compile Include="Interfaces\Core\IBaseRecoverBLL.cs" />
+    <Compile Include="Interfaces\InquiryManage\IInquiryBLL.cs" />
+    <Compile Include="Interfaces\ParityManage\IDealOrderBLL.cs" />
+    <Compile Include="Interfaces\ParityManage\IParityBLL.cs" />
+    <Compile Include="Interfaces\QuoteManage\IQuoteBLL.cs" />
+    <Compile Include="Interfaces\QuoteManage\IQuoteManageBLL.cs" />
+    <Compile Include="Interfaces\UserManger\IUserManagerBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{5645f615-3d6e-4f63-93a4-88d8c4a17bd6}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{a41054e9-12d7-4776-bfe7-879bebfdd5db}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

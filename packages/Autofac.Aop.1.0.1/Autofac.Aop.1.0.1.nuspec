@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Autofac.Aop</id>
+    <version>1.0.1</version>
+    <authors>IliyaTryapitsin</authors>
+    <owners>IliyaTryapitsin</owners>
+    <projectUrl>https://github.com/IliyaTryapitsin/Aop</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Add Aspect-oriented programming to Autofac</description>
+    <dependencies>
+      <dependency id="Autofac" version="3.1.1" />
+      <dependency id="Castle.Core" version="3.2.0" />
+      <dependency id="Autofac.Extras.DynamicProxy2" version="3.0.2" />
+    </dependencies>
+  </metadata>
+</package>

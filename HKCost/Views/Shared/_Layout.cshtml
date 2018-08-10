@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    @*<script language="javascript"> location.replace("/areas/zzicec/web/index.html") </script>*@
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

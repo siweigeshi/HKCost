@@ -1,0 +1,11 @@
+﻿{
+    "success": true,
+    "total": 12,
+	"curPage":2,
+    "students": [
+        {"id":1, "name": "Lisa", "email": "lisa@simpsons.com", "phone": "555-111-1224" },
+        {"id":2, "name": "Bart", "email": "bart@simpsons.com", "phone": "555-222-1234" },
+		{"id":3, "name": "Stuart", "email": "sutart@simpsons.com", "phone": "555-333-1224" },
+        {"id":4, "name": "Lucy", "email": "Lucy@simpsons.com", "phone": "555-444-1234" },
+    ]
+}

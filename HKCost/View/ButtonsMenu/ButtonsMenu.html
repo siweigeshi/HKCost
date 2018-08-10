@@ -1,0 +1,8 @@
+﻿<style>
+    #buttons button{
+        margin-left:5px;
+    }
+</style>
+<div id="buttons">
+    <button ng-repeat="btn in json" type="button" class="btn" ng-class="btn.class" ng-bind="btn.name" ng-click="myApply(btn.click, btn)"></button>
+</div>

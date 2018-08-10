@@ -1,0 +1,69 @@
+﻿<div oc-lazy-load="page.register">
+    <div ng-controller="RegisterFormController as reg" class="block-center mt-xl wd-xl">
+        <script src="/Scripts/Vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- START panel-->
+        <div class="panel panel-dark panel-flat">
+            <div class="panel-heading text-center">
+                <a href="#">
+                    <img src="/Images/logo.png" alt="Image" class="block-center img-rounded" />
+                </a>
+            </div>
+            <div class="panel-body">
+                <p class="text-center pv">中储恒科物联网系统有限公司询价系统</p>
+                <form role="form" name="reg.registerForm" novalidate="" ng-submit="reg.register()" class="form-validate mb-lg">
+                    <div class="form-group has-feedback">
+                        <label class="text-muted">公司名称</label>
+                        <input type="text" name="account_name" placeholder="请输入公司名称" autocomplete="off" ng-model="reg.account_name" required="" class="form-control" />
+                        <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                        <!--<span ng-show="reg.registerForm.account_email.$dirty &amp;&amp; reg.registerForm.account_email.$error.required" class="text-danger">请填写公司名称</span>-->
+                        <span ng-show="reg.registerForm.account_name.$dirty &amp;&amp; reg.registerForm.account_name.$error.required" class="text-danger">请填写公司名称</span>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="text-muted">公司邮箱</label>
+                        <input type="email" name="account_email" placeholder="请输入邮箱地址" autocomplete="off" ng-model="reg.account.email" required="" class="form-control" />
+                        <span class="fa fa-envelope form-control-feedback text-muted"></span>
+                        <span ng-show="reg.registerForm.account_email.$dirty &amp;&amp; reg.registerForm.account_email.$error.required" class="text-danger">请填写邮箱地址</span>
+                        <span ng-show="reg.registerForm.account_email.$dirty &amp;&amp; reg.registerForm.account_email.$error.email" class="text-danger">请输入正确的邮箱地址</span>
+
+
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="text-muted">密码</label>
+                        <input id="id-password" type="password" name="account_password" ng-model="reg.register.password" placeholder="请输入密码" ng-pattern="/^[a-zA-Z0-9]{6,10}$/" required="" class="form-control" />
+                        <span class="fa fa-lock form-control-feedback text-muted"></span>
+                        <span ng-show="reg.registerForm.account_password.$dirty &amp;&amp; reg.registerForm.account_password.$error.required" class="text-danger">密码不能为空</span>
+                        <span ng-show="reg.registerForm.account_password.$dirty &amp;&amp; reg.registerForm.account_password.$error.pattern" class="text-danger">输入6-10位并为数字和字符结合</span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="text-muted">确认密码</label>
+                        <input type="password" name="account_password_confirm" ng-model="reg.register.account_password_confirm" placeholder="请再次输入密码" ui-validate="'$value==reg.register.password'" ui-validate-watch="'password'" class="form-control" />
+                        <span class="fa fa-lock form-control-feedback text-muted"></span>
+                        <span ng-show="reg.registerForm.account_password_confirm.$dirty &amp;&amp; reg.registerForm.account_password_confirm.$error.validator" class="text-danger">两次密码不一致</span>
+                    </div>
+                    <!--<div class="clearfix">
+        <div class="checkbox c-checkbox pull-left mt0">
+            <label>
+                <input type="checkbox" required="" name="account_agreed" ng-model="reg.account.agreed" />
+                <span class="fa fa-check"></span>I agree with the <a href="#">terms</a>
+            </label>
+        </div>
+    </div>
+    <div ng-show="reg.registerForm.account_agreed.$dirty &amp;&amp; reg.registerForm.account_agreed.$error.required" class="text-danger">You must agree the terms</div>-->
+                    <button type="submit" class="btn btn-block btn-primary mt-lg">创建账号</button>
+                </form>
+                <div ng-show="reg.authMsg" class="alert alert-danger text-center">{{reg.authMsg}}</div>
+                <p class="pt-lg text-center">已有账号？</p><a ui-sref="page.login" class="btn btn-block btn-default">登录</a>
+            </div>
+        </div>
+        <!-- END panel-->
+        <div class="p-lg text-center">
+            <span>&copy;</span>
+            <span ng-bind="app.year"></span>
+            <span>-</span>
+            <span ng-bind="app.name"></span>
+            <br />
+            <span ng-bind="app.description"></span>
+        </div>
+    </div>
+</div>

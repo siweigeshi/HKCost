@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NHibernate.OracleManaged</id>
+    <version>1.0.1</version>
+    <title>NHibernate.OracleManaged</title>
+    <authors>Rafael do Livramento Silveira</authors>
+    <owners>Rafael do Livramento Silveira</owners>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <projectUrl>https://nuget.org/packages/NHibernate.OracleManaged</projectUrl>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Oracle managed specific nhibernate driver.
+
+Example using NHibernate configuration by code:
+
+  var cfg = new Configuration();
+  cfg.DataBaseIntegration(db =&gt; {
+      db.ConnectionString = @"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=your_host)(PORT=your_port)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=your_service)));User Id=your_user;Password=your_password;";
+      db.Driver&lt;NHibernate.Driver.OracleManagedDriver&gt;();
+      db.Dialect&lt;NHibernate.Dialect.Oracle10gDialect&gt;();
+      db.SchemaAction = SchemaAutoAction.Validate;
+  });
+  // ...define your context and mapping...
+  var sessionFactory = cfg.BuildSessionFactory();</description>
+    <summary>Oracle managed specific nhibernate driver.</summary>
+    <releaseNotes>- added how-to-use in description;</releaseNotes>
+    <copyright>Copyright  2014</copyright>
+    <language>en-US</language>
+    <tags>nhibernate oracle managed driver</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="NHibernate" version="3.3.3.4001" />
+        <dependency id="odp.net.managed" version="121.1.1" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

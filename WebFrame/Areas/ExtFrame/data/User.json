@@ -1,0 +1,11 @@
+﻿{
+    "success": true,
+    "total": 12,
+	"curPage":2,
+    "user": [
+        {"OID":"AD671F9C-84BE-4D76-B73C-A4520096A2C6", "Name": "Lisa", "UserName": "Lisa", "UserPwd": "123456","State":1,"CreateTime":"2015-03-11" },
+		{"OID":"CE75DCFD-C165-4FFE-8551-A4520096DA7B", "Name": "Lucy", "UserName": "Lucy", "UserPwd": "123456","State":1,"CreateTime":"2015-03-11" },
+		{"OID":"1E5FC121-C3CA-4002-A96E-A45200AA0A1A", "Name": "Stuart", "UserName": "Stuart", "UserPwd": "123456","State":1,"CreateTime":"2015-03-11" },
+		{"OID":"F569CA57-66DA-453B-A0BC-A45200AAD41D", "Name": "Fancy", "UserName": "Fancy", "UserPwd": "123456","State":1,"CreateTime":"2015-03-11" }
+    ]
+}

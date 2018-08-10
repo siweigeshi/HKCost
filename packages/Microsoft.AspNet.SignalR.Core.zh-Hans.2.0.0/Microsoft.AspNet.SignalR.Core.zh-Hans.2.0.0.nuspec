@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.SignalR.Core.zh-Hans</id>
+    <version>2.0.0</version>
+    <title>Microsoft ASP.NET SignalR Core 简体中文资源</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_CHS.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/signalR</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>此程序包包含适用于 ASP.NET SignalR Core 的简体中文附属程序集。</description>
+    <summary>适用于 Microsoft.AspNet.SignalR.Core 程序包的简体中文资源</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>zh-Hans</language>
+    <tags>Microsoft AspNet SignalR AspNetSignalR Core</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.SignalR.Core" version="[2.0.0]" />
+    </dependencies>
+  </metadata>
+</package>

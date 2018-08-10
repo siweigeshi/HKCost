@@ -1,0 +1,609 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WorkflowService.OrderFlow.OrderFlow"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:local="clr-namespace:WorkflowService.OrderFlow"
+ xmlns:local1="clr-namespace:WorkflowService.Base"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="OrderOID" Type="InArgument(x:String)" />
+    <x:Property Name="ManagerAduit" Type="InArgument(x:Boolean)" />
+    <x:Property Name="LeaderAduit" Type="InArgument(x:Boolean)" />
+    <x:Property Name="DesignerAduit" Type="InArgument(x:Boolean)" />
+    <x:Property Name="ManagerNext" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="LeaderNext" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="DesignerNext" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="AduitContext" Type="InArgument(x:String)" />
+    <x:Property Name="AllNext" Type="InArgument(x:Boolean)" />
+    <x:Property Name="OrderBatch" Type="InArgument(x:String)" />
+    <x:Property Name="Operater" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>WorkflowService.OrderFlow.OrderFlow_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Common</AssemblyReference>
+      <AssemblyReference>FluentNHibernate</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>NHibernate</AssemblyReference>
+      <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Runtime.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Web.DynamicData</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Web.Entity</AssemblyReference>
+      <AssemblyReference>System.Web.ApplicationServices</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Channels</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.WorkflowServices</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>Domain</AssemblyReference>
+      <AssemblyReference>Tools</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>WorkflowService</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <StateMachine sap2010:WorkflowViewState.IdRef="StateMachine_1">
+    <StateMachine.InitialState>
+      <State x:Name="__ReferenceID2" DisplayName="进入工作流" sap2010:WorkflowViewState.IdRef="State_1">
+        <State.Entry>
+          <local:ApplyFlow sap2010:WorkflowViewState.IdRef="ApplyFlow_1">
+            <local:ApplyFlow.AduitBatch>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String">ADUITBATCH</mca:CSharpReference>
+              </OutArgument>
+            </local:ApplyFlow.AduitBatch>
+            <local:ApplyFlow.OrderOID>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+              </InArgument>
+            </local:ApplyFlow.OrderOID>
+          </local:ApplyFlow>
+        </State.Entry>
+        <State.Transitions>
+          <Transition DisplayName="" sap2010:WorkflowViewState.IdRef="Transition_3">
+            <Transition.Trigger>
+              <local1:BookMarkCodeActivity Num="{x:Null}" sap2010:WorkflowViewState.IdRef="BookMarkCodeActivity_6">
+                <local1:BookMarkCodeActivity.BookMarkName>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">OrderOID+"Manager"</mca:CSharpValue>
+                  </InArgument>
+                </local1:BookMarkCodeActivity.BookMarkName>
+              </local1:BookMarkCodeActivity>
+            </Transition.Trigger>
+            <Transition.Condition>True</Transition.Condition>
+            <Transition.To>
+              <State x:Name="__ReferenceID3" DisplayName="项目经理审核" sap2010:WorkflowViewState.IdRef="State_4">
+                <State.Entry>
+                  <local:ManageAduit sap2010:WorkflowViewState.IdRef="ManageAduit_1">
+                    <local:ManageAduit.AduitContext>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">AduitContext</mca:CSharpValue>
+                      </InArgument>
+                    </local:ManageAduit.AduitContext>
+                    <local:ManageAduit.IsAgree>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpValue x:TypeArguments="x:Boolean">ManagerAduit</mca:CSharpValue>
+                      </InArgument>
+                    </local:ManageAduit.IsAgree>
+                    <local:ManageAduit.IsNext>
+                      <OutArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpReference x:TypeArguments="x:Boolean">ManagerNext</mca:CSharpReference>
+                      </OutArgument>
+                    </local:ManageAduit.IsNext>
+                    <local:ManageAduit.Operator>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">Operater</mca:CSharpValue>
+                      </InArgument>
+                    </local:ManageAduit.Operator>
+                    <local:ManageAduit.OrderOID>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                      </InArgument>
+                    </local:ManageAduit.OrderOID>
+                  </local:ManageAduit>
+                </State.Entry>
+                <State.Transitions>
+                  <Transition DisplayName="项目经理审核通过" sap2010:WorkflowViewState.IdRef="Transition_6">
+                    <Transition.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean">ManagerNext</mca:CSharpValue>
+                    </Transition.Condition>
+                    <Transition.To>
+                      <State x:Name="__ReferenceID1" DisplayName="判断是否所有审核全部通过" sap2010:WorkflowViewState.IdRef="State_7">
+                        <State.Entry>
+                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+                            <local:JudgeAduit sap2010:WorkflowViewState.IdRef="JudgeAduit_1">
+                              <local:JudgeAduit.IsNext>
+                                <OutArgument x:TypeArguments="x:Boolean">
+                                  <mca:CSharpReference x:TypeArguments="x:Boolean">AllNext</mca:CSharpReference>
+                                </OutArgument>
+                              </local:JudgeAduit.IsNext>
+                              <local:JudgeAduit.OrderBatch>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">OrderBatch</mca:CSharpValue>
+                                </InArgument>
+                              </local:JudgeAduit.OrderBatch>
+                              <local:JudgeAduit.OrderOID>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                                </InArgument>
+                              </local:JudgeAduit.OrderOID>
+                            </local:JudgeAduit>
+                            <If sap2010:WorkflowViewState.IdRef="If_1">
+                              <If.Condition>
+                                <InArgument x:TypeArguments="x:Boolean">
+                                  <mca:CSharpValue x:TypeArguments="x:Boolean">AllNext</mca:CSharpValue>
+                                </InArgument>
+                              </If.Condition>
+                              <If.Else>
+                                <local1:BookMarkCodeActivity Num="{x:Null}" BookMarkName="JudgeAduit" sap2010:WorkflowViewState.IdRef="BookMarkCodeActivity_11" />
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </State.Entry>
+                        <State.Transitions>
+                          <Transition DisplayName="" sap2010:WorkflowViewState.IdRef="Transition_12">
+                            <Transition.Condition>
+                              <mca:CSharpValue x:TypeArguments="x:Boolean">AllNext</mca:CSharpValue>
+                            </Transition.Condition>
+                            <Transition.To>
+                              <State x:Name="__ReferenceID0" DisplayName="FinalState" sap2010:WorkflowViewState.IdRef="State_8" IsFinal="True" />
+                            </Transition.To>
+                          </Transition>
+                        </State.Transitions>
+                      </State>
+                    </Transition.To>
+                  </Transition>
+                  <Transition DisplayName="项目经理审核不通过" sap2010:WorkflowViewState.IdRef="Transition_7" To="{x:Reference __ReferenceID0}">
+                    <Transition.Action>
+                      <local:Disagree sap2010:WorkflowViewState.IdRef="Disagree_2">
+                        <local:Disagree.OrderBatch>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">ADUITBATCH</mca:CSharpReference>
+                          </OutArgument>
+                        </local:Disagree.OrderBatch>
+                        <local:Disagree.OrderOID>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                          </InArgument>
+                        </local:Disagree.OrderOID>
+                      </local:Disagree>
+                    </Transition.Action>
+                    <Transition.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean">!ManagerNext</mca:CSharpValue>
+                    </Transition.Condition>
+                  </Transition>
+                </State.Transitions>
+              </State>
+            </Transition.To>
+          </Transition>
+          <Transition DisplayName="" sap2010:WorkflowViewState.IdRef="Transition_4">
+            <Transition.Trigger>
+              <local1:BookMarkCodeActivity Num="{x:Null}" sap2010:WorkflowViewState.IdRef="BookMarkCodeActivity_7">
+                <local1:BookMarkCodeActivity.BookMarkName>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">OrderOID+"Leader"</mca:CSharpValue>
+                  </InArgument>
+                </local1:BookMarkCodeActivity.BookMarkName>
+              </local1:BookMarkCodeActivity>
+            </Transition.Trigger>
+            <Transition.Condition>True</Transition.Condition>
+            <Transition.To>
+              <State x:Name="__ReferenceID4" DisplayName="会展中心负责人审核" sap2010:WorkflowViewState.IdRef="State_5">
+                <State.Entry>
+                  <local:LeadAduit sap2010:WorkflowViewState.IdRef="LeadAduit_1">
+                    <local:LeadAduit.AduitContext>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">AduitContext</mca:CSharpValue>
+                      </InArgument>
+                    </local:LeadAduit.AduitContext>
+                    <local:LeadAduit.IsAgree>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpValue x:TypeArguments="x:Boolean">LeaderAduit</mca:CSharpValue>
+                      </InArgument>
+                    </local:LeadAduit.IsAgree>
+                    <local:LeadAduit.IsNext>
+                      <OutArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpReference x:TypeArguments="x:Boolean">LeaderNext</mca:CSharpReference>
+                      </OutArgument>
+                    </local:LeadAduit.IsNext>
+                    <local:LeadAduit.Operator>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">Operater</mca:CSharpValue>
+                      </InArgument>
+                    </local:LeadAduit.Operator>
+                    <local:LeadAduit.OrderOID>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                      </InArgument>
+                    </local:LeadAduit.OrderOID>
+                  </local:LeadAduit>
+                </State.Entry>
+                <State.Transitions>
+                  <Transition DisplayName="会展中心负责人审核通过" sap2010:WorkflowViewState.IdRef="Transition_8" To="{x:Reference __ReferenceID1}">
+                    <Transition.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean">LeaderNext</mca:CSharpValue>
+                    </Transition.Condition>
+                  </Transition>
+                  <Transition DisplayName="会展负责人审核不通过" sap2010:WorkflowViewState.IdRef="Transition_10" To="{x:Reference __ReferenceID0}">
+                    <Transition.Action>
+                      <local:Disagree sap2010:WorkflowViewState.IdRef="Disagree_3">
+                        <local:Disagree.OrderBatch>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">ADUITBATCH</mca:CSharpReference>
+                          </OutArgument>
+                        </local:Disagree.OrderBatch>
+                        <local:Disagree.OrderOID>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                          </InArgument>
+                        </local:Disagree.OrderOID>
+                      </local:Disagree>
+                    </Transition.Action>
+                    <Transition.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean">!LeaderNext</mca:CSharpValue>
+                    </Transition.Condition>
+                  </Transition>
+                </State.Transitions>
+              </State>
+            </Transition.To>
+          </Transition>
+          <Transition DisplayName="" sap2010:WorkflowViewState.IdRef="Transition_5">
+            <Transition.Trigger>
+              <local1:BookMarkCodeActivity Num="{x:Null}" sap2010:WorkflowViewState.IdRef="BookMarkCodeActivity_8">
+                <local1:BookMarkCodeActivity.BookMarkName>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">OrderOID+"Designer"</mca:CSharpValue>
+                  </InArgument>
+                </local1:BookMarkCodeActivity.BookMarkName>
+              </local1:BookMarkCodeActivity>
+            </Transition.Trigger>
+            <Transition.Condition>True</Transition.Condition>
+            <Transition.To>
+              <State x:Name="__ReferenceID5" DisplayName="施工总设计师审核" sap2010:WorkflowViewState.IdRef="State_6">
+                <State.Entry>
+                  <local:DesignerAduit sap2010:WorkflowViewState.IdRef="DesignerAduit_1">
+                    <local:DesignerAduit.AduitContext>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">AduitContext</mca:CSharpValue>
+                      </InArgument>
+                    </local:DesignerAduit.AduitContext>
+                    <local:DesignerAduit.IsAgree>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpValue x:TypeArguments="x:Boolean">DesignerAduit</mca:CSharpValue>
+                      </InArgument>
+                    </local:DesignerAduit.IsAgree>
+                    <local:DesignerAduit.IsNext>
+                      <OutArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpReference x:TypeArguments="x:Boolean">DesignerNext</mca:CSharpReference>
+                      </OutArgument>
+                    </local:DesignerAduit.IsNext>
+                    <local:DesignerAduit.Operator>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">Operater</mca:CSharpValue>
+                      </InArgument>
+                    </local:DesignerAduit.Operator>
+                    <local:DesignerAduit.OrderOID>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                      </InArgument>
+                    </local:DesignerAduit.OrderOID>
+                  </local:DesignerAduit>
+                </State.Entry>
+                <State.Transitions>
+                  <Transition DisplayName="施工设计师审核通过" sap2010:WorkflowViewState.IdRef="Transition_9" To="{x:Reference __ReferenceID1}">
+                    <Transition.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean">DesignerNext</mca:CSharpValue>
+                    </Transition.Condition>
+                  </Transition>
+                  <Transition DisplayName="施工设计师审核不通过" sap2010:WorkflowViewState.IdRef="Transition_11" To="{x:Reference __ReferenceID0}">
+                    <Transition.Action>
+                      <local:Disagree sap2010:WorkflowViewState.IdRef="Disagree_4">
+                        <local:Disagree.OrderBatch>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String">ADUITBATCH</mca:CSharpReference>
+                          </OutArgument>
+                        </local:Disagree.OrderBatch>
+                        <local:Disagree.OrderOID>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                          </InArgument>
+                        </local:Disagree.OrderOID>
+                      </local:Disagree>
+                    </Transition.Action>
+                    <Transition.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean">!DesignerNext</mca:CSharpValue>
+                    </Transition.Condition>
+                  </Transition>
+                </State.Transitions>
+              </State>
+            </Transition.To>
+          </Transition>
+          <Transition DisplayName="" sap2010:WorkflowViewState.IdRef="Transition_14">
+            <Transition.Trigger>
+              <local1:BookMarkCodeActivity Num="{x:Null}" sap2010:WorkflowViewState.IdRef="BookMarkCodeActivity_9">
+                <local1:BookMarkCodeActivity.BookMarkName>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">OrderOID + "Revoke"</mca:CSharpValue>
+                  </InArgument>
+                </local1:BookMarkCodeActivity.BookMarkName>
+              </local1:BookMarkCodeActivity>
+            </Transition.Trigger>
+            <Transition.Condition>True</Transition.Condition>
+            <Transition.To>
+              <State x:Name="__ReferenceID6" DisplayName="撤销订单" sap2010:WorkflowViewState.IdRef="State_9">
+                <State.Entry>
+                  <local:RevokeOrder sap2010:WorkflowViewState.IdRef="RevokeOrder_1">
+                    <local:RevokeOrder.OrderOID>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String">OrderOID</mca:CSharpValue>
+                      </InArgument>
+                    </local:RevokeOrder.OrderOID>
+                  </local:RevokeOrder>
+                </State.Entry>
+                <State.Transitions>
+                  <Transition DisplayName="" sap2010:WorkflowViewState.IdRef="Transition_13" To="{x:Reference __ReferenceID0}" Condition="True" />
+                </State.Transitions>
+              </State>
+            </Transition.To>
+          </Transition>
+        </State.Transitions>
+      </State>
+    </StateMachine.InitialState>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <StateMachine.Variables>
+      <Variable x:TypeArguments="x:String" Name="ADUITBATCH" />
+    </StateMachine.Variables>
+    <sads:DebugSymbol.Symbol>d0pFOlwyMTAuNzYuMC4xMDRcRXhoaWJpdGlvblByb2plY3RcV29ya2Zsb3dTZXJ2aWNlXE9yZGVyRmxvd1xPcmRlckZsb3cueGFtbEVKA4gDEgIBAUwH+wIPAwHNA2gPzQEXAwHTAtwBD5QCFwMB2QGjAg/bAhcCAV+MARe2AR8CARayAR+yAZIBAgEU6gIP9wIXAgECTgtZHQMBiwReD2QtAwH9A2YjZicDAfwD0gEP2AEtAwHuA9oBI9oBJwMB7QOZAg+fAi0DAd8DoQIjoQInAwHeA+ACD+YCLQMB0APoAiPoAicDAc8DahOEAScDAYsDiQEXiQFhAwH9AskBF8kBYgMB8AK7ARfGASgDAdUC3gET+AElAwGRAv0BF/0BYAMBgwKQAheQAmEDAfYBggIXjQIoAwHbAaUCE78CKQMBlwHEAhfEAmIDAYkB1wIX1wJjAgF8yQIX1AIoAgFhjgEbqgEmAgEmrwEfrwFlAgEY7AIT8gInAgEG9QKKAfUCkAECAQRREVFhAwGZBFYRVlcDAYwEYRVhZQMB/gPVARXVAWQDAe8DnAIVnAJmAwHgA+MCFeMCZgMB0QNtGW1jAwHAA3IZcmQDAbMDdxl3awMBpgN8GXxfAwGZA4EBGYEBXwMBjAO+AR2+AW0DAeMCwwEdwwFjAwHWAuEBGeEBYwMBxgLmARnmAWMDAbkC6wEZ6wFqAwGsAvABGfABXwMBnwL1ARn1AV8DAZIChQIdhQJtAwHpAYoCHYoCYwMB3AGoAhmoAmMDAcwBrQIZrQJlAwG/AbICGbICbAMBsgG3Ahm3Al8DAaUBvAIZvAJfAwGYAcwCHcwCbQIBb9ECHdECYwIBYo8BHZ8BMAIBN6ABHakBIgIBJ+8CGe8CXwIBB5IBI5IBcQIBUpcBI5cBawIBRZwBI5wBaQIBOKMBI6MBaQIBKKcBIacBowECATWnAVqnAWYCATY=</sads:DebugSymbol.Symbol>
+  </StateMachine>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ApplyFlow_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="BookMarkCodeActivity_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ManageAduit_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="JudgeAduit_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="BookMarkCodeActivity_11" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,213">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,239">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_8" sap:VirtualizedContainerService.HintSize="114,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">373,450.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_12" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">430,400.5 430,450.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_7" sap:VirtualizedContainerService.HintSize="114,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">373,339.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_6" sap:VirtualizedContainerService.HintSize="430,522">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">258.6,280.5 258.6,310.5 401.5,310.5 401.5,339.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">31</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">18</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Disagree_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_7" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">213,250 183,250 183,490.15 373,490.15</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">37</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">49</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="114,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">213,219.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_3" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">401.5,170.5 401.5,200.5 270,200.5 270,219.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">19</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BookMarkCodeActivity_7" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="LeadAduit_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_8" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">424.3,280.5 424.3,339.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">35</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">34</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Disagree_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_10" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">373,256.1 343,256.1 343,474.9 373,474.9</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">45</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">29</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_5" sap:VirtualizedContainerService.HintSize="114,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">373,219.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_4" sap:VirtualizedContainerService.HintSize="430,522">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">435.7,170.5 435.7,219.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">42</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BookMarkCodeActivity_8" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="DesignerAduit_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_9" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">584.3,280.5 584.3,310.5 458.5,310.5 458.5,339.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">35</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">58</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Disagree_4" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_11" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">647,256.1 677,256.1 677,474.9 487,474.9</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">44</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">28</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_6" sap:VirtualizedContainerService.HintSize="114,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">533,219.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_5" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">464.2,170.5 464.2,200.5 590,200.5 590,219.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">63</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BookMarkCodeActivity_9" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RevokeOrder_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Transition_13" sap:VirtualizedContainerService.HintSize="430,520">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">771.3,283.5 771.3,490.15 487,490.15</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">35</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">48</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_9" sap:VirtualizedContainerService.HintSize="114,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">720,222.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Transition_14" sap:VirtualizedContainerService.HintSize="430,522">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:PointCollection x:Key="ConnectorLocation">487,140 771.3,140 771.3,222.5</av:PointCollection>
+            <x:Int32 x:Key="SrcConnectionPointIndex">36</x:Int32>
+            <x:Int32 x:Key="DestConnectionPointIndex">34</x:Int32>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="State_1" sap:VirtualizedContainerService.HintSize="114,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">373,109.5</av:Point>
+            <av:Size x:Key="ShapeSize">114,61</av:Size>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="StateMachine_1" sap:VirtualizedContainerService.HintSize="956,747">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">400,2.5</av:Point>
+            <x:Double x:Key="StateContainerWidth">942</x:Double>
+            <x:Double x:Key="StateContainerHeight">711.26</x:Double>
+            <av:PointCollection x:Key="ConnectorLocation">430,77.5 430,109.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WorkflowService.OrderFlow.OrderFlow_1" sap:VirtualizedContainerService.HintSize="996,827" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

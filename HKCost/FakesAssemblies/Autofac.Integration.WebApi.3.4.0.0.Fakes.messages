@@ -1,0 +1,45 @@
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.IFilterWrapper 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ActionFilterWrapper 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthorizationFilterWrapper 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ActionFilterOverrideWrapper 生成存根: 类型已密封。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacOverrideFilter 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ControllerTypeKey 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthenticationFilterWrapper 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthenticationFilterOverrideWrapper 生成存根: 类型已密封。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthorizationFilterOverrideWrapper 生成存根: 类型已密封。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ExceptionFilterWrapper 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ExceptionFilterOverrideWrapper 生成存根: 类型已密封。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.CurrentRequestHandler 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.DependencyResolverExtensions 生成存根: 类型已密封。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.FilterMetadata 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacControllerConfigurationAttribute 生成存根: 类型已密封。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacControllerConfigurationAttributeResources 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.RegistrationExtensions 生成存根: 类型已密封。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.RegistrationExtensionsResources 生成存根: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.IAutofacActionFilter 生成填充码: 类型是一个接口。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.IFilterWrapper 生成填充码: 类型是一个接口。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ActionFilterWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.IAutofacAuthorizationFilter 生成填充码: 类型是一个接口。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthorizationFilterWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ActionFilterOverrideWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacOverrideFilter 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacWebApiFilterProvider+<>c__DisplayClass23`2 生成填充码: 类型不受支持，因为存在内部限制。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacWebApiFilterProvider+<>c__DisplayClass26`2 生成填充码: 类型不受支持，因为存在内部限制。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacWebApiFilterProvider+<>c__DisplayClass29 生成填充码: 类型不受支持，因为存在内部限制。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacWebApiFilterProvider+<>c__DisplayClass2c 生成填充码: 类型不受支持，因为存在内部限制。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacWebApiFilterProvider+<>c__DisplayClass2f 生成填充码: 类型不受支持，因为存在内部限制。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacWebApiFilterProvider+FilterContext 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacWebApiModelBinderProvider+<>c__DisplayClass3 生成填充码: 类型不受支持，因为存在内部限制。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ControllerTypeKey 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.IAutofacAuthenticationFilter 生成填充码: 类型是一个接口。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthenticationFilterWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthenticationFilterOverrideWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AuthorizationFilterOverrideWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.IAutofacExceptionFilter 生成填充码: 类型是一个接口。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ExceptionFilterWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.ExceptionFilterOverrideWrapper 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.CurrentRequestHandler 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.FilterMetadata 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.AutofacControllerConfigurationAttributeResources 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.RegistrationExtensions+<>c__DisplayClass3`3 生成填充码: 类型不受支持，因为存在内部限制。
+E:\WORK\Git项目\mvcframework\HKCost\Fakes\Autofac.Integration.WebApi.fakes : warning : 无法为 Autofac.Integration.WebApi.RegistrationExtensionsResources 生成填充码: 类型对 exported or assembly(Autofac.Integration.WebApi.3.4.0.0.Fakes) 不可见。

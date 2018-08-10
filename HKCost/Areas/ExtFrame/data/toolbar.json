@@ -1,0 +1,6 @@
+﻿{toolbar:[
+	{"Name":"新增","ico":0xf016,"handler":"onClickButtonAdd"},
+	{"Name":"修改","ico":0xf044,"handler":"onClickButtonEdit"},
+	{"Name":"删除","ico":0xf014,"handler":"onClickButtonDel"},
+	{"Name":"查看","ico":0xf022,"handler":"onClickButtonLook"}
+]}

@@ -1,0 +1,13 @@
+﻿body {
+}
+#logout div.modal-content {
+    margin: 0 auto;
+    width:300px;
+}
+#logout div.modal-body {
+    height: 160px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 150px;
+    padding-left: 80px;
+}

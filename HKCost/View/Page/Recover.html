@@ -1,0 +1,34 @@
+﻿<div class="block-center mt-xl wd-xl" ng-controller="recoverController">
+    <!-- START panel-->
+    <div class="panel panel-dark panel-flat">
+        <div class="panel-heading text-center">
+            <a href="#">
+                <img src="/Images/logo.png" alt="Image" class="block-center img-rounded" />
+            </a>
+        </div>
+        <div class="panel-body">
+            <p class="text-center pv">PASSWORD RECOVER</p>
+            <form role="form" name="recoverForm" novalidate="" class="form-validate">
+                <p class="text-center">请输入你正确的邮箱地址<br />注意：验证码验证时需要邮箱地址正确</p>
+                <div class="form-group has-feedback">
+                    <label class="text-muted">邮箱地址</label>
+                    <input ng-blur="emailCheck()" type="text" name="email" placeholder="我们会将验证码发往您的邮箱" autocomplete="off" ng-pattern="/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/" ng-model="captcha.email" class="form-control" />
+                </div>
+                <button ng-disabled="disable" class="btn btn-primary btn-block" ng-click="send()">{{emailInfor}}</button>
+                <div class="form-group">
+                    <label class="text-muted">验证码</label>
+                    <input ng-blur="captchaCheck()" type="text" name="captcha" placeholder="请输入您得到的6位验证码" autocomplete="off" ng-model="captcha.captcha" ng-pattern="/^[0-9a-zA-z_]{6,6}$/" class="form-control" />
+                </div>
+                <button class="btn btn-success btn-block" ng-click="checkCaptcha()">验证</button>
+                <button class="btn btn-danger btn-block" ng-click="resetCaptcha()">清空表单</button>
+            </form>
+        </div>
+    </div>
+    <!-- END panel-->
+    <div class="p-lg text-center">
+        <span>&copy;</span>
+        <span ng-bind="app.year"></span>
+        <span>-</span>
+        <span>中储恒科物联网系统有限公司</span>
+    </div>
+</div>

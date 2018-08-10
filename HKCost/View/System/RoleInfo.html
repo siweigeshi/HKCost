@@ -1,0 +1,189 @@
+﻿<link href="/Content/app/systemMgt/RoleInfo.css" rel="stylesheet" />
+<h3>
+    角色管理
+    <!--<small>在这里进行角色的分配与管理</small>-->
+</h3>
+
+<div id="_tableDetail" class="panel panel-default form-inline">
+    <div class="panel-heading">
+        角色表单
+        <small>表单详情</small>
+    </div>
+    <!--角色增删改查表单位置-->
+    <div class="panel-body">
+        <table class="row-border hover">
+            <thead>
+                <tr>
+                    <th class="col-lg-3">
+                        <div class="form-group">
+                            <label for="id">编号</label>
+                            <input type="text" name="id" placeholder="请输入编号" ng-model=" table.id" class="form-control" />
+                        </div>
+                    </th>
+                    <th class="col-lg-4">
+                        <div class="form-group">
+                            <label for="roleName">角色名称</label>
+                            <input type="text" name="roleName" placeholder="请输入角色名称" ng-model="table.roleName" class="form-control" />
+                        </div>
+                    </th>
+                    <th class="col-lg-3">
+                        <div class="form-group">
+                            <label for="permission">拥有权限</label>
+                            <!--placeholder="请选择拥有的权限"-->
+                            <select name="permission" ng-model="table.permission" class="form-control">
+                                <option value="NAME">名称</option>
+                                <option value="CODE">代码</option>
+                            </select>
+                        </div>
+                    </th>
+                    <th class="col-lg-2">
+                        <div class="form-group">
+                            <label for="state">状态</label>
+                            <select name="state" ng-model="table.state" class="form-control">
+                                <option value="NAME">名称</option>
+                                <option value="CODE">代码</option>
+                            </select>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!--主题table的显示部分  包括搜索栏-->
+<div class="panel panel-default form-inline">
+    <div class="panel-heading">
+        搜索
+    </div>
+    <div id="_tableBody" class="panel-body">
+        <div>
+            <!--搜索栏 增删改查一系列按钮  table来布局-->
+            <table class="searchTable row-border hover col-lg-12">
+                <tbody>
+                    <tr>
+                        <td class="col-lg-7 col-sm-7">
+                            <div class="form-group">
+                                <label for="state">查询条件</label>
+                                <select name="state" ng-model="table.state" class="form-control">
+                                    <option value="NAME">编号</option>
+                                    <option value="CODE">代码</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="roleName">关键词</label>
+                                <input type="text" name="antistop" placeholder="请输入搜索关键词" ng-model="table.antistop" class="form-control" />
+                            </div>
+                            <!--搜索button-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                        </td>
+                        <td class="col-lg-5 col-sm-5 rightBtn">
+                            <!--7个button-->
+                            <!--查看-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <!--新增-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <!--修改-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <!--保存-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <!--删除-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <!--分配权限-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <!--移除权限-->
+                            <button type="button" ng-click="" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!--主要数据表格-->
+            <table class="row-border hover col-lg-12">
+                <!--head部分-->
+                <thead>
+                    <tr>
+                        <th class="col-lg-2">
+                            <input id="checkAll" type="checkbox" />
+                            编号
+                        </th>
+                        <th class="col-lg-2 col-sm-2">
+                            名称
+                        </th>
+                        <th class="col-lg-2 col-sm-2">
+                            状态
+                        </th>
+                        <th class="col-lg-2 col-sm-2">
+                            对应权限
+                        </th>
+                        <th class="col-lg-2 col-sm-2">
+                            创建时间↓
+                        </th>
+                        <th class="col-lg-2 col-sm-2">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <!--END head-->
+                <!--tbody显示部分-->
+                <tbody>
+                    <!--测试样式tr-->
+                    <tr>
+                        <td class="col-lg-2 col-sm-2"><input type="checkbox" />001</td>
+                        <td class="col-lg-2 col-sm-2">王宇浩</td>
+                        <td class="col-lg-2 col-sm-2">正常</td>
+                        <td class="col-lg-2 col-sm-2">写、读</td>
+                        <td class="col-lg-2 col-sm-2">2017-08-17 10：35：00</td>
+                        <td class="col-lg-2 col-sm-2">
+                            <button type="button" ng-click="table.modifyPerson($index)" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <button type="button" ng-click="table.removePerson($index)" class="btn btn-sm btn-danger">
+                                <em class="fa fa-trash-o"></em>
+                            </button>
+                        </td>
+                    </tr>
+                    <!--实际tr-->
+                    <tr ng-repeat="role in ShopList" ng-cloak>
+                        <td><input class="check" type="checkbox" name="{{role.OID}}" /><span ng-bind="$index+1"></span></td>
+                        <td><span ng-bind="role.NAME"></span></td>
+                        <td><span ng-bind="role.STATE"></span></td>
+                        <td><span ng-bind="role.PERMISSION"></span></td>
+                        <td><span ng-bind="role.CREATTIME"></span></td>
+                        <td>
+                            <button class="btn btn-sm btn-success" ng-click="onClickButtonEditRow(role.OID)">修改</button>
+                            <button type="button" ng-click="table.modifyPerson($index)" class="btn btn-sm btn-warning">
+                                <em class="fa fa-edit"></em>
+                            </button>
+                            <button type="button" ng-click="table.removePerson($index)" class="btn btn-sm btn-danger">
+                                <em class="fa fa-trash-o"></em>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <!--END tbody-->
+            </table>
+            <!--*************************  bootstrap分页开始-->
+            <tm-pagination conf="paginationConf"></tm-pagination>
+            <!--*************************  bootstrap分页结束-->
+            <!--END 主要数据表格 -->
+        </div>
+    </div>
+    <!--END 主题显示table-->
+</div>

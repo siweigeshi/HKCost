@@ -1,0 +1,30 @@
+﻿<div class="block-center mt-xl wd-xl" ng-controller="recoverController">
+    <!-- START panel-->
+    <div class="panel panel-dark panel-flat">
+        <div class="panel-heading text-center">
+            <a href="#">
+                <img src="/Images/logo.png" alt="Image" class="block-center img-rounded" />
+            </a>
+        </div>
+        <div class="panel-body">
+            <p class="text-center pv">PASSWORD RESET</p>
+            <p class="text-center pv">密码重置</p>
+            <form role="form" name="recoverForm" class="form-validate">
+                <div class="form-group has-feedback">
+                    <label class="text-muted">请输入新密码</label>
+                    <input type="password" placeholder="新的密码" ng-model="newPwd" ng-pattern="/^[0-9a-zA-z_]{6,20}$/" class="form-control" />
+                    <label class="text-muted">请再次输入</label>
+                    <input type="password" placeholder="请再次输入已确认" ng-model="checkNewPwd" ng-pattern="/^[0-9a-zA-z_]{6,20}$/" class="form-control" />
+                </div>
+                <button class="btn btn-success btn-block" ng-click="resetPwd()">确定重置</button>
+            </form>
+        </div>
+    </div>
+    <!-- END panel-->
+    <div class="p-lg text-center">
+        <span>&copy;</span>
+        <span ng-bind="app.year"></span>
+        <span>-</span>
+        <span>中储恒科物联网系统有限公司</span>
+    </div>
+</div>

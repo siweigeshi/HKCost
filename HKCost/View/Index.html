@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="col-md-12" style="margin-top:50px;">
+        <h2>演示：</h2>
+        <ul>
+            <li><a target="_self" href="http://localhost:26055/api/BaseTest/ThrowHttp404?ct=json">触发404页面未找到,测试路径：/Home/ThrowHttp404</a></li>
+            <li><a target="_self" href="http://localhost:26055/api/BaseTest/ThrowHttp500?ct=json">触发500服务器错误,测试路径：/Home/ThrowHttp500</a></li>
+            <li><a target="_self" href="http://localhost:26055/api/BaseTest/ExceptionTestByBLL?ct=json">触发自定义错误</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="/Scripts/Vendor/jquery/dist/jquery.js"></script>
+<script src="/Scripts/Tools/FunctionJS.js"></script>
+<script type="text/JavaScript">
+    debugger
+    // BusinessService.getTeachList().success(handleTeachTable).error(Tools.Method.ExceptionEncapOp);
+    $.ajax({
+        type: 'GET',
+        //dataType: "json",
+        //contentType: "text/json",
+        url: Tools.Method.getAPiRootPath() + "/api/Base/GETTestException?ct=json",
+        data: null,
+        cache: false,
+        async: true,
+        success: function (msg) {
+            if (msg) {
+                debugger
+            }
+        },
+
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            debugger
+            Tools.Method.ExceptionEncapOp(XMLHttpRequest, textStatus, errorThrown);
+        }
+    });
+    debugger
+    //var url = Tools.Method.getAPiRootPath() + "/api/Base/GETTestException?ct=json";
+    //Tools.Method.GetAjaxEncap(url, 'get', null, true, function (res) {
+    //    if (res) {
+    //        debugger
+    //    }
+    //});
+</script>
+

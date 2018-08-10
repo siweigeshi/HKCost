@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Oracle.ManagedDataAccess</id>
+    <version>12.1.021</version>
+    <title>Official Oracle ODP.NET, Managed Driver</title>
+    <authors>Oracle</authors>
+    <owners>Oracle</owners>
+    <licenseUrl>http://www.oracle.com/technetwork/licenses/distribution-license-152002.html</licenseUrl>
+    <projectUrl>http://otn.oracle.com/dotnet</projectUrl>
+    <iconUrl>http://www.oracle.com/technetwork/topics/dotnet/products/oracle12c-2402760.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Oracle Data Provider for .NET, Managed Driver is a 100% native .NET code driver. No additional Oracle Client software is required to be installed to connect to Oracle Database.
+
+Note: The 32-bit Oracle Developer Tools for Visual Studio download from http://otn.oracle.com/dotnet is required for Entity Framework design-time features and for other Visual Studio designers such as the TableAdapter Wizard. This NuGet download does not enable design-time tools, only run-time support.</description>
+    <summary>The official Oracle Data Provider for .NET, Managed Driver for Oracle Database.</summary>
+    <releaseNotes>ODP.NET, Managed Driver 12.1.0.2.0 from ODAC 12c Release 3</releaseNotes>
+    <copyright>2014</copyright>
+    <tags>ODP.NET provider Oracle DB database .NET</tags>
+  </metadata>
+</package>

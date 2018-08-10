@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Purplelight.Framework.Autofac.Integration.WebApi</id>
+    <version>0.2.2</version>
+    <title>Purplelight.Framework.Autofac.Integration.WebApi</title>
+    <authors>Purplelight</authors>
+    <owners>Purplelight</owners>
+    <licenseUrl>http://license_url_here_or_delete_this_line/</licenseUrl>
+    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Productivity enhancements to Autofac WebApi Integration</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Tag1 Tag2</tags>
+    <dependencies>
+      <dependency id="Autofac.WebApi2" version="3.4.0" />
+      <dependency id="NLog" version="3.2.1" />
+    </dependencies>
+  </metadata>
+</package>

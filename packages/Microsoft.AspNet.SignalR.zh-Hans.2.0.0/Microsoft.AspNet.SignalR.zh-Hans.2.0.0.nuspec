@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.SignalR.zh-Hans</id>
+    <version>2.0.0</version>
+    <title>Microsoft ASP.NET SignalR 简体中文资源</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_CHS.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/signalR</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>这是 ASP.NET SignalR 简体中文附属程序集的元程序包。</description>
+    <summary>Microsoft.AspNet.SignalR 程序包的简体中文资源</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>zh-Hans</language>
+    <tags>Microsoft AspNet SignalR AspNetSignalR websockets real-time realtime comet HTTP streaming</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.SignalR.JS" version="2.0.0" />
+      <dependency id="Microsoft.AspNet.SignalR.SystemWeb.zh-Hans" version="2.0.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

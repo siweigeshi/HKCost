@@ -1,0 +1,161 @@
+﻿<link rel='stylesheet prefetch' href='https://unpkg.com/ng-table/bundles/ng-table.min.css'>
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog-theme-default.min.css" rel="stylesheet" />
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog.min.css" rel="stylesheet" />
+<link href="/Content/common/jquery-ui.min.css" rel="stylesheet" />
+<link href="/Content/common/sweetalert.css" rel="stylesheet" />
+<link href="/Content/common/sweetalert.css" rel="stylesheet" />
+<link href="/Content/ParityManage/DealOrder.css" rel="stylesheet" />
+
+<div class="content-heading">
+    成交订单管理
+</div>
+<!--主页面开始-->
+<div class="row task panel panel-default" ng-controller="DealOrderController" id="tablePanel">
+    <div class="serach">
+        <div class="serachLeft">
+            <div class="form-inline col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <select class="form-control" ng-model="searchField">
+                        <option value="InquiryTitle">询价标题</option>
+                        <option value="GoodsName">货物名称</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入搜索关键字" ng-model="searchValue">
+                </div>
+                <div class="checkbox">
+                    <button class="btn btn-default btn-success" ng-click="search()">查询</button>
+                    <button class="btn btn-default btn-default" ng-click="reset()">重置</button>
+                </div>
+            </div>
+            <!-- <div class="btn-menu">
+             <button class="btn btn-default btn-success add" data-toggle="modal" ng-click="addSheet()">新增</button>
+             <button class="btn btn-default btn-primary look" ng-click="submit(-1)" disabled>提交</button>
+                <button class="btn btn-default btn-danger del" ng-click="delete(-1)">批量删除</button>
+               <button class="btn btn-default btn-primary edit" ng-click="save(-2)">修改</button>
+            </div>-->
+        </div>
+    </div>
+    <ng-table></ng-table>
+</div>
+<!--主页面结束-->
+<!--复选框开始-->
+<script type="text/ng-template" id="headerCheckbox.html">
+    <div class="checkbox c-checkbox">
+        <label>
+            <input type="checkbox" class="select-all" value="" ng-model="checkboxes.checked" />
+            <span class="fa fa-check"></span>
+        </label>
+    </div>
+</script>
+<!--复选框结束-->
+<!-- 显示页面的表格开始-->
+<script type="text/ng-template" id="table.html">
+    <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+        <colgroup>
+            <col width="2%" />
+            <col width="4%" />
+            <col width="15%" />
+            <col width="10%" />
+            <col width="7%" />
+            <col width="7%" />
+            <col width="8%" />
+            <col width="8%" />
+            <col width="12%" />
+            <!--<col width="15%" />-->
+
+        </colgroup>
+        <tr ng-repeat="dealorder in $data" class="taskTr">
+            <td header="'headerCheckbox.html'">
+                <div class="checkbox c-checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checkboxes.items[dealorder.OID]" />
+                        <span class="fa fa-check"></span>
+                    </label>
+                </div>
+            </td>
+            <td data-title="'序号'">{{$index+1}}</td>
+            <td data-title="'询价标题'" sortable="'InquiryTitle'" ng-click="look($index)">{{dealorder.InquiryTitle}}</td>
+            <td data-title="'报价人'" sortable="'BuyCompanyName'" ng-click="look($index)">{{dealorder.QuotationCompany}}</td>
+            <td data-title="'报价金额'" sortable="'QuotedPrice'" ng-click="look($index)">{{dealorder.QuotedPrice}}</td>
+            <td data-title="'联系人'" sortable="'Contacts'" ng-click="look($index)">{{dealorder.Contacts}}</td>
+            <td data-title="'联系电话'" sortable="'Tel'" ng-click="look($index)">{{dealorder.Tel}}</td>
+            <td data-title="'报价时间'" sortable="'QuotationTime'" ng-click="look($index)">{{dealorder.CREATETIME}}</td>
+            <td data-title="'操作'" class="middle">
+                <button type="button" class="btn btn-default" ng-click="lookDealOrderSheet($index)">查看详情</button>
+                <!--<button class="btn btn-default btn-success" ng-click="Choice($index)" >选择此家</button>-->
+                <!--<button class="btn btn-default btn-danger" disabled ng-if="isBtn[$index]">已报价</button>-->
+                <!--<button class="btn btn-default btn-success" ng-click="Edit($index)" ng-if="isEdit[$index]">修改</button>-->
+                <!--<button class="btn btn-default btn-danger" ng-click="delete(dealorder.OID)" ng-if="isDelete[$index]">删除</button>-->
+
+            </td>
+        </tr>
+    </table>
+</script>
+<!-- 显示页面的表格结束-->
+<!-- 成交订单查看模态框 -->
+<script type="text/ng-template" id="DealOrderSheetModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+            &times;
+        </button>
+        <div class="pull-left">
+            <span class="lc-avatar-def">详情</span>
+        </div>
+    </div>
+    <div class="modal-body">
+        <table class="table table-striped table-bordered">
+            <caption>订单详情</caption>
+            <thead>
+                <tr>
+                    <th>询价标题</th>
+                    <th>报价公司</th>
+                    <th>采购金额</th>
+                    <th>货物名称</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>联系人</th>
+                    <th>联系电话</th>
+                    <th>报价时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{DealOrder.InquiryTitle}}</td>
+                    <td>{{DealOrder.QuotationCompany}}</td>
+                    <td>{{DealOrder.QuotedPrice}}</td>
+                    <td>{{DealOrder.GoodsName}}</td>
+                    <td>{{DealOrder.StartTime}}</td>
+                    <td>{{DealOrder.EndTime}}</td>
+                    <td>{{DealOrder.Contacts}}</td>
+                    <td>{{DealOrder.Tel}}</td>
+                    <td>{{DealOrder.CREATETIME}}</td>
+                </tr>
+            </tbody>
+            <!--<thead>
+                <tr>
+                   
+                    <th>联系人</th>
+                    <th>联系电话</th>
+                    <th>报价时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                 
+                    <td>{{DealOrder.Contacts}}</td>
+                    <td>{{DealOrder.Tel}}</td>
+                    <td>{{DealOrder.CREATETIME}}</td>
+                </tr>
+            </tbody>-->
+        </table>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="cancel()">
+            关闭
+        </button>
+    </div>
+</script>
+<!-- 成交订单查看模态框结束-->

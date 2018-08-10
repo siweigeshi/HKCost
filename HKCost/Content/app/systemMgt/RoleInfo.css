@@ -1,0 +1,9 @@
+﻿body {
+}
+
+#_tableBody table .rightBtn button {
+    float: right;
+}
+#_tableBody .searchTable {
+    margin-bottom: 15px;
+}

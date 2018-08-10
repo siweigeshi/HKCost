@@ -1,0 +1,16 @@
+﻿.OperaionLook {
+    background-image:url("magnifier.png") !important;
+}
+.OperaionDelete {
+    background-image:url("delete.gif") !important;
+}
+.OperaionArrowUp {
+    background-image:url("arrow_up.png") !important;
+}
+.OperaionArrowDown {
+    background-image:url("arrow_down.png") !important;
+}
+.OperationAdd {
+    background-image:url("add.png") !important;
+}
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.SignalR.Client</id>
+    <version>2.2.1</version>
+    <title>Microsoft ASP.NET SignalR .NET Client</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_ENU.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/signalr</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET client for ASP.NET SignalR.</description>
+    <summary />
+    <releaseNotes>https://github.com/SignalR/SignalR/releases</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>Microsoft AspNet SignalR AspNetSignalR Client</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="Newtonsoft.Json" version="6.0.4" />
+      </group>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Newtonsoft.Json" version="6.0.4" />
+      </group>
+      <group targetFramework=".NETPortable0.0-net45+netcore45+sl5+wp8+wp81">
+        <dependency id="Newtonsoft.Json" version="6.0.4" />
+        <dependency id="Microsoft.Net.Http" version="2.2.28" />
+      </group>
+      <group targetFramework="Unsupported0.0">
+        <dependency id="Newtonsoft.Json" version="6.0.4" />
+        <dependency id="Microsoft.Net.Http" version="2.2.28" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

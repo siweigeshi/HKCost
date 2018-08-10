@@ -1,0 +1,154 @@
+﻿<div class="content-heading">
+    字典管理
+</div>
+
+<script type="text/ng-template" id="headerCheckbox.html">
+    <div class="checkbox c-checkbox">
+        <label>
+            <input type="checkbox" ng-model="checkboxes.checked" class="select-all" value="" />
+            <span class="fa fa-check"></span>
+        </label>
+    </div>
+</script>
+<!-- 按钮触发模态框 -->
+<script type="text/ng-template" id="/myModalContent.html">
+    <div class="modal-header"><button class="close" type="button" data-dismiss="modal" aria-hidden="true"></button><h4 class="modal-title" id="myModalLabel">添加下拉框数据</h4></div>
+    <div class="modal-body">
+        <form role="form" name="add" novalidate="" class="form-validate mb-lg">
+            <div class="form-group has-feedback">
+                <label>Value:</label>
+                <input id="exampleInputEmail1" type="text" name="ddl_value" placeholder="请输入Value" autocomplete="off"
+                       ng-model="ddlAdd.Value" required="" class="form-control" />
+                <span class="fa fa-database form-control-feedback text-muted"></span>
+                <span ng-show="add.ddl_value.$dirty &amp;&amp; add.ddl_value.$error.required" class="text-danger">Value不能位空</span>
+            </div>
+            <div class="form-group has-feedback">
+                <label>Text:</label>
+                <input id="exampleInputPassword1" type="text" name="ddl_text" placeholder="请输入Text" ng-model="ddlAdd.Text" required="" class="form-control" />
+                <span class="fa fa-font form-control-feedback text-muted"></span>
+                <span ng-show="add.ddl_text.$dirty &amp;&amp; add.ddl_text.$error.required" class="text-danger">Text不能位空</span>
+            </div>
+            <div class="form-group has-feedback">
+                <button class="btn btn-primary" ng-click="ok()" ng-disabled="(!add.ddl_value.$dirty || add.ddl_value.$invalid) || (!add.ddl_text.$dirty || add.ddl_text.$invalid)">
+                    确定
+                </button>
+                <a href="javascript:void(0)" class="btn btn-warning pull-right" ng-click="cancel()">取消</a>
+            </div>
+        </form>
+    </div>
+    <!--<div class="modal-footer">
+
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+    </div>-->
+</script>
+<link rel='stylesheet prefetch' href='https://unpkg.com/ng-table/bundles/ng-table.min.css'>
+<!-- START widgets box-->
+<div class="row" ng-controller="DictionaryController">
+    <form name="dictionaryForm">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-inline">
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12" ng-class="{'has-error':dictionaryForm.title.$dirty && dictionaryForm.title.$invalid,'has-success':dictionaryForm.title.$dirty && dictionaryForm.title.$valid}">
+                        <div ng-show="dictionaryForm.title.$dirty && dictionaryForm.title.$error.required" style="position:absolute;z-index:10;top:51px;left:50px;color:red;">名称不能为空</div>
+                        <div class="input-group-addon addon">名称<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="请输入名称" name="title" ng-model="form.TITLE" />
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12" ng-class="{'has-error':myForm.filename.$dirty && myForm.filename.$invalid,'has-success':myForm.filename.$dirty && myForm.filename.$valid}">
+                        <div ng-show=" myForm.filename.$dirty &&myForm.filename.$error.required" style="position:absolute;z-index:10;top:51px;left:50px;color:red;">对应字段名称不能为空</div>
+                        <div class="input-group-addon addon">对应字段名称<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="请输入对应字段名称" name="filename" ng-model="form.FILENAME" />
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">下拉框<span style="color:#f00">*</span></div>
+                        <select class="form-control" ng-options="ddl.Key as ddl.Value for ddl in form.DropList" ng-model="form.ddlValue">
+                            <option value="">请选择</option>
+                        </select>
+                        <button type="button" class="btn  btn-success" style=" position: absolute; right: 9px; z-index: 10;" ng-click="Del()">删除</button>
+                        <button type="button" class="btn  btn-success" style=" position: absolute; right: 70px; z-index: 10;" ng-click="Add()">添加</button>
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">备注</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" rows="3" placeholder="请书写备注内容"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <label>备注</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="panel panel-default" id="tablePanel">
+        <!-- whirl double-up-->
+        <div class="searchButons clearfix">
+            <div class="form-inline">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <select class="form-control" ng-model="searchfield">
+                            <option value="TITLE">名称</option>
+                            <option value="FILENAME">字段名称</option>
+                            <option value="CONTENT">内容</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" ng-model="searchValue" placeholder="请输入搜索关键字">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-click="Search();" id="search"
+                                data-loading-text="
+                            <i class='fa fa-spinner fa-spin '></i>查询中..">查询
+                        </button>
+                        <button type="submit" class="btn btn-dropbox" ng-click="Reset()">重置</button>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsMenu pull-right">
+                <buttons-menu></buttons-menu>
+            </div>
+        </div>
+        <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+            <colgroup>
+                <col width="5%" />
+                <col width="5%" />
+                <col width="10%" />
+                <col width="20%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="20%" />
+                <col width="10%" />
+            </colgroup>
+            <tr ng-repeat="parent in $data" class="">
+                <td header="'headerCheckbox.html'">
+                    <div class="checkbox c-checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="checkboxes.items[parent.OID]" />
+                            <span class="fa fa-check"></span>
+                        </label>
+                    </div>
+                </td>
+                <td data-title="'序号'" ng-bind="$index+1"></td>
+                <td data-title="'名称'" ng-bind="parent.TITLE" sortable="'TITLE'"></td>
+                <td data-title="'字段名称'" ng-bind="parent.FILENAME" sortable="'FILENAME'"></td>
+                <td data-title="'内容'" ng-bind="parent.CONTENT"></td>
+                <td data-title="'下拉框演示'" id={{$index}}>
+                    <select class="form-control" ng-options="ddl.Key as ddl.Value for ddl in parent.DropList" ng-model="parent.ddlValue">
+                        <option value="">请选择</option>
+                    </select>
+                </td>
+                <td data-title="'备注'" ng-bind="parent.REMARK"></td>
+                <td data-title="'操作'" id={{$index}} ng-init="outerIndex = $index">
+                    <button ng-repeat="btn in btnList" class="btn btn-info" ng-click="myApply(btn.PathHandler, parent,outerIndex)">{{btn.Name}}</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}" style="position:absolute;z-index:100;"></toaster-container>
+</div>
+
+<!-- END widgets box-->

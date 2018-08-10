@@ -1,0 +1,1 @@
+﻿[{ "name": "新增", "class": "btn-purple", "click": "onAdd()" },{ "name": "查看", "class": "btn-default", "click": "onSee()" }, { "name": "删除", "class": "btn-primary","click": "onDelete()" }, { "name": "修改", "class": "btn-success","click": "onEdit()" }, { "name": "保存", "class": "btn-info" ,"click": "onSave()"}]

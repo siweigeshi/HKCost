@@ -1,0 +1,7 @@
+/*
+jQWidgets v5.1.0 (2017-Aug)
+Copyright (c) 2011-2017 jQWidgets.
+License: http://jqwidgets.com/license/
+*/
+!function(a){a.extend(a.jqx._jqxChart.prototype,{_moduleWaterfall:!0,_isSummary:function(a,e){for(var i=this.seriesGroups[a],t=0;t<i.series.length;t++)if(void 0!==i.series[t].summary&&(summaryValue=this._getDataValue(e,i.series[t].summary,a),void 0!==summaryValue))return!0;return!1},_applyWaterfall:function(a,e,i,t,s,r,u,f,l){var o=this.seriesGroups[i];if(0==a.length)return a;for(var v=t,N={},n=[],m=void 0,h=[],_=0;_<o.series.length;_++)h.push(this._isSerieVisible(i,_));for(var g={},y=0;y<e;y++)for(var D=t,p=0,d=this._isSummary(i,y),_=0;_<a.length;_++)if(h[_]){var x=0;if(d){x=D==t?s:0,a[_][y].value=N[_],a[_][y].summary=!0,m=a[_][y].value<x,f&&(m=!m);V=0;V=isNaN(r)?this._getDataPointOffsetDiff(a[_][y].value,x,x,NaN,u,t,f):this._getDataPointOffsetDiff(a[_][y].value+p,0==p?s:p,x||s,r,u,t,f),a[_][y].to=D+(m?V:-V),a[_][y].from=D,l&&(p+=a[_][y].value,D=a[_][y].to)}else{var O=l?-1:_;if(!isNaN(a[_][y].value)){void 0===g[O]&&(x=s,g[O]=!0),m=a[_][y].value<x,f&&(m=!m);var P=NaN,V=NaN;P=l?v:0==y?t:a[_][n[_]].to;V=0;V=isNaN(r)?this._getDataPointOffsetDiff(a[_][y].value,x,x,NaN,u,t,f):this._getDataPointOffsetDiff(a[_][y].value+(isNaN(N[O])?0:N[O]),isNaN(N[O])?s:N[O],x||s,r,u,P,f),a[_][y].to=v=P+(m?V:-V),a[_][y].from=P,isNaN(N[O])?N[O]=a[_][y].value:N[O]+=a[_][y].value,-1==O&&(isNaN(N[_])?N[_]=a[_][y].value:N[_]+=a[_][y].value),l||(n[_]=y)}}}return a}})}(jqxBaseFramework);
+

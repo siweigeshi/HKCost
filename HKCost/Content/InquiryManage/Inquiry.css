@@ -1,0 +1,161 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: '微软雅黑';
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #f2f2f2;
+}
+/*   *样式   */
+.am-text-danger {
+    color: #dd514c;
+}
+/*时间插件样式覆盖*/
+.ui-widget-header {
+    border: 1px solid #fff;
+    background: #47c3e9;
+    color: #fff;
+    font-weight: bold;
+}
+span.ui-icon.ui-icon-circle-triangle-e { /*时间控件的右边选项*/
+    background-image: url(images/ui-icons.png);
+}
+
+span.ui-icon.ui-icon-circle-triangle-w { /*时间控件的左边选项*/
+    background-image: url(images/ui-icons.png);
+}
+/*.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    opacity: .5;
+}*/
+
+
+.ui-widget-content {
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #454545;
+}
+
+    .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+        border: none;
+        background: #fff;
+        font-weight: normal;
+        color: #454545;
+    }
+
+    .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+        /*border: 1px solid #dad55e;*/
+        background: #fffa90;
+        color: #777620;
+        border-radius: 10px;
+    }
+
+fieldset {
+    margin-bottom: 0px;
+}
+
+.sweet-alert .sa-input-error.show {
+    margin-top: -6px;
+}
+
+.task {
+    background-color: white;
+}
+
+.serach {
+    padding: 10px;
+    margin-bottom: 45px;
+}
+
+.btn-menu {
+    float: right;
+}
+
+    .btn-menu button {
+        color: white;
+    }
+
+.ng-table tr td {
+    text-align: center;
+}
+
+.padding {
+    padding: 10px !important;
+    display: table;
+}
+
+    .padding .form-control {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    .padding .input-group-addon {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+.panel-body .form-inline .addon {
+    width: 144px;
+}
+
+.input-group[class*=col-] {
+    float: left !important;
+}
+
+.member, .detail {
+    height: auto;
+}
+
+.checkbox-inline {
+    margin-left: 0px !important;
+    margin-right: 10px;
+}
+
+.required {
+    color: #f00;
+    margin-top: 3px;
+}
+
+.error {
+    color: red;
+    margin-left: 15px;
+}
+
+.taskTr {
+    height: 60px;
+    line-height: 60px;
+}
+/*最上面紫色小圆圈*/
+.modal-header .lc-avatar-def {
+    display: block;
+    width: 48px;
+    height: 48px;
+    background-color: rgb(148, 115, 253);
+    line-height: 48px;
+    font-size: 14px;
+    border-radius: 48px;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    text-shadow: transparent 0 0 0;
+}
+
+.small {
+    float: right;
+    line-height: 60px;
+    margin-right: 5px;
+    font-weight: 400;
+}
+
+.table tbody tr .middle {
+    line-height: 60px;
+
+}
+.table tbody td .ng-binding {
+    text-align: center;
+}
+

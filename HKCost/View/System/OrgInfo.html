@@ -1,0 +1,236 @@
+﻿<div class="content-heading">
+   组织机构管理
+</div>
+
+
+<script type="text/ng-template" id="headerCheckbox.html">
+    <div class="checkbox c-checkbox">
+        <label>
+            <input type="checkbox" ng-model="checkboxes.checked" class="select-all" value="" />
+            <span class="fa fa-check"></span>
+        </label>
+    </div>
+</script>
+<!--<script type="text/ng-template" id="table.html">
+    <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+        <colgroup>
+            <col width="5%" />
+            <col width="5%" />
+            <col width="20%" />
+            <col width="20%" />
+            <col width="20%" />
+            <col width="10%" />
+            <col width="10%" />
+        </colgroup>
+        <tr ng-repeat="parent in $data" class="">
+            <td header="'headerCheckbox.html'">
+                <div class="checkbox c-checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checkboxes.items[parent.OID]" />
+                        <span class="fa fa-check"></span>
+                    </label>
+                </div>
+            </td>
+            <td data-title="'序号'" ng-bind="$index+1"></td>
+            <td data-title="'名称'" ng-bind="parent.NAME" sortable="'NAME'"></td>
+            <td data-title="'代码'" ng-bind="parent.CODE" sortable="'CODE'"></td>
+            <td data-title="'创建时间'" ng-bind="parent.CREATETIME" sortable="'CREATETIME'"></td>
+            <td data-title="'备注'" ng-bind="parent.REMARK"> </td>
+            <td data-title="'操作'" id={{$index}}>
+                <button ng-repeat="btn in btnList" ng-class="btn.classs" ng-click="myApply(btn.click, btn,event)">{{btn.name}}</button>
+            </td>
+        </tr>
+    </table>
+</script>-->
+<style>
+    /*表单样式*/
+    .padding {
+        padding: 10px !important;
+    }
+
+    .panel-body .form-inline .addon {
+        width: 144px;
+    }
+
+    .input-group[class*=col-] {
+        float: left !important;
+    }
+
+    .searchButons {
+        margin: 10px;
+    }
+
+    .ng-table tr td {
+        text-align: center;
+    }
+
+    button {
+        margin-left: 5px;
+    }
+
+    form .fa {
+        font-size: 16px;
+        line-height: 35px;
+        margin-right: 5px;
+    }
+
+    form .fa-close {
+        color: red;
+    }
+
+    form .fa-check {
+        color: green;
+    }
+</style>
+<link rel='stylesheet prefetch' href='https://unpkg.com/ng-table/bundles/ng-table.min.css'>
+<!-- START widgets box-->
+<div class="row">
+    <form name="myForm">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-inline">                  
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">机构名称<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="根结点" />
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">英文名称<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="根结点" />
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">机构简称<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="根结点" />
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">上级机构<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="根结点" />
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">机构编号<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="根结点" />
+                    </div>
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">机构号<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="根结点" />               
+                    </div>                                                      
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">状态<span style="color:#f00">*</span></div>
+                        <select class="form-control" ng-model="year">
+                            <option>无</option>
+                            <option>导出</option>
+                            <option>查看</option>
+                            <option>新增</option>
+                            <option>修改</option>
+                            <option>删除</option>
+                            <option>保存</option>
+                        </select>
+                    </div>   
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="input-group-addon addon">排序<span style="color:#f00">*</span></div>
+                        <input class="form-control" placeholder="根结点" />
+                    </div>                 
+                    <div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">描述</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" rows="3" placeholder="请书写描述内容"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="input-group  padding col-md-3 col-sm-6 col-xs-12">
+                        <label>备注</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="panel panel-default" id="tablePanel">
+        <!-- whirl double-up-->
+        <div class="searchButons clearfix">
+            <div class="form-inline">
+                <div class="col-md-6 col-sm-6 col-xs-12" id="BudgetCount">
+                    <div class="form-group">
+                        <select class="form-control" ng-model="searchfield">
+                            <option value="CODE">代码</option>
+                            <option value="NAME">名称</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input class="form-control" ng-model="searchValue" placeholder="请输入搜索关键字">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success" ng-click="buttonSearch();" id="search"
+                                data-loading-text="
+                            <i class='fa fa-spinner fa-spin '></i>查询中..">查询
+                        </button>
+                        <button type="submit" class="btn btn-dropbox" ng-click="buttonReset()">重置</button>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsMenu pull-right">
+                <buttons-menu></buttons-menu>
+            </div>
+        </div>
+        <!--<ng-table></ng-table>-->
+        <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+            <colgroup>
+                <col width="5%" />
+                <col width="5%" />
+                <col width="10%" />
+                <col width="20%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="20%" />
+            </colgroup>
+            <tr ng-repeat="parent in $data" class="">
+                <td header="'headerCheckbox.html'">
+                    <div class="checkbox c-checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="checkboxes.items[parent.OID]" />
+                            <span class="fa fa-check"></span>
+                        </label>
+                    </div>
+                </td>
+                <td data-title="'名称'" ng-bind="$index+1"></td>
+                <td data-title="'机构编号'" ng-bind="parent.NAME" sortable="'NAME'"></td>
+                <td data-title="'英文名称'" ng-bind="parent.CODE" sortable="'CODE'"></td>
+                <td data-title="'机构级别'" ng-bind="parent.CREATETIME" sortable="'CREATETIME'"></td>           
+                <td data-title="'状态'" id={{$index}}>
+                    <button ng-repeat="btn in btnList" ng-class="btn.classs" ng-click="myApply(btn.click, btn,event)">{{btn.name}}</button>
+                </td>
+                <td data-title="'操作'" ng-bind="parent.REMARK">
+                    <em class="fa fa-navicon"></em>
+                    <em class="fa fa-navicon"></em>
+                    <em class="fa fa-navicon"></em>
+                </td>
+            </tr>
+            <tr class="">
+                <td>
+                    <div class="checkbox c-checkbox">
+                        <label>
+                            <input type="checkbox" />
+                            <span class="fa fa-check"></span>
+                        </label>
+                    </div>
+                </td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>          
+                <td>
+                    <em class="fa fa-plus-circle" style="color: red; cursor: pointer;"></em>
+                    <em class="fa fa-search" style="cursor:pointer;"></em>
+                    <em class="fa fa-minus-circle" style="color: green; cursor: pointer;"></em>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}" style="position:absolute;z-index:100;"></toaster-container>
+</div>
+
+<!-- END widgets box-->
