@@ -82,7 +82,7 @@
                 for (var i = 0; i < data.QuoteManageList.length; i++) {
                  
                     if (data.QuoteManageList[i].QuoteState == 3) {
-                        $scope.status[i] = "报价结束";
+                        $scope.status[i] = "报价失败";
                         $scope.isEdit[i] = false;
                     }
                     else if (data.QuoteManageList[i].QuoteState == 2) {

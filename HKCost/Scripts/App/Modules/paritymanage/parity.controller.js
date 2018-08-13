@@ -78,7 +78,6 @@
                 tableList = data.QuoteSheetList;
                 $defer.resolve(data.QuoteSheetList);
                 func(data.QuoteSheetList);
-                
             })
         }
 
@@ -97,17 +96,16 @@
             })
         };
 
-        //选择采购某家东西/修改报价表和询价表的数据
+        //选择采购某家东西/修改报价表和询价表的数据---当用户点击选择此家时，需要将这个标题的所有报价表状态改变 ，方便选择供应商后的页面显示问题。【报价单全部修改为3,报价成功的改为2】
         $scope.Choice = function (index) {
-
             var QuoSheet = {};
             QuoSheet = tableList[index];//把当前数组中数据绑定到前台
             QuoSheet.QuoteState = 2;//修改本条数据报价单中的状态改为2
-            ParityService.PostQuoteStatusSave(QuoSheet).success(function () {
-                ParityService.GetQuoteManageListswhere(tableList[index].InquiryTitle).success(function (data) {
+            ParityService.PostQuoteStatusSave(QuoSheet).success(function () {//保存选中的报价单中 的数据
+                ParityService.GetQuoteManageListswhere(tableList[index].InquiryTitle).success(function (data) {//通过标题来寻找当前询价单的数据
                     $scope.InquirysSheet = data[0];
-                    $scope.InquirysSheet.BuyState = 2;
-                    ParityService.PostInquiryStatusSave($scope.InquirysSheet);//修改询价表中的状态
+                    $scope.InquirysSheet.BuyState = 2;//修改询价单的状态
+                    ParityService.PostInquiryStatusSave($scope.InquirysSheet);//保存修改过的询价表中的数据
 
                     var Order = {};
                     Order.InquiryTitle = QuoSheet.InquiryTitle;
@@ -119,27 +117,12 @@
                     Order.GoodsName = $scope.InquirysSheet.GoodsName;
                     Order.Contacts = QuoSheet.Contacts;
                     Order.Tel = QuoSheet.Tel;
-
-                    //var Order = {
-                    //    InquiryTitle = QuoSheet.InquiryTitle,
-                    //    BuyCompanyName=QuoSheet.BuyCompanyName,
-                    //    QuotationCompany=QuoSheet.QuotationCompany,
-                    //    StartTime=$scope.InquirysSheet.StartTime,
-                    //    EndTime=$scope.InquirysSheet.EndTime,
-                    //    QuotedPrice=QuoSheet.QuotedPrice,
-                    //    GoodsName=$scope.InquirysSheet.GoodsName,
-                    //    Contacts=QuoSheet.Contacts,
-                    //    Tel=QuoSheet.Tel
-                    //};
                     ParityService.PostDealOrderSave(Order);//增加交易单记录
 
                 })
                 SweetAlert.swal('选择成功!', '选中的询价报价单状态已更改', 'success');
                 loadTable();
             })
-
-
-
         }
     }
 })()

@@ -76,12 +76,13 @@
                 for (var i = 0; i < data.inquiryList.length; i++) {//从询价表中获取数据，当每一条状态不为2的时候都显示为可以报价，还需要从报价表中找到本条数据是否已报价状态。 需要通过标题和报价人寻找报价单中状态等于1的数据，那这条数据即为当前报价人在此询价标题中唯一的一条记录
                     $scope.status[i] = "询价中";//状态显示询价中
                     $scope.isQuote[i] = true;//显示 我要报价按钮
-                    QuoteService.GetQuoteListswhere(data.inquiryList[i].InquiryTitle).success(function (data) {//获取报价单单条数据信息
+                    var isQuoteIndex = i;
+                    Tools.Method.GetAjaxEncap('/api/Quote/GetQuoteListswhere?ct=json&swhere=' + data.inquiryList[i].InquiryTitle, 'GET', null, false, function (data) {
+                    //QuoteService.GetQuoteListswhere(data.inquiryList[i].InquiryTitle).success(function (data) {//获取报价单单条数据信息
                         if (data.length != 0 && data[0].QuoteState == 1) {
-                            $scope.isQuote[0] = false;//“我要报价”按钮隐藏
-                            $scope.isBtn[0] = true;//“已报价” 按钮显示
+                            $scope.isQuote[isQuoteIndex] = false;//“我要报价”按钮隐藏
+                            $scope.isBtn[isQuoteIndex] = true;//“已报价” 按钮显示
                         }
-
                     })
                     if (data.inquiryList[i].BuyState == 2) {//如果询价单状态为1
                         $scope.status[i] = "询价结束";

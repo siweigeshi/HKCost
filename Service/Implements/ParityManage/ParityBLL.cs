@@ -11,6 +11,8 @@ using DAL.Implements.Base;
 using Domain.Study;
 using Domain.Core;
 using Common.QueryHelper;
+using System.Collections;
+using DAL;
 
 namespace Service.Implements.ParityManage
 {
@@ -57,7 +59,13 @@ namespace Service.Implements.ParityManage
         /// <returns></returns>
         public bool PostQuoteStatusSave(SupplierQuote supplierQuote)
         {
-            return this.SaveOrUpdate(supplierQuote);
+
+            SessionFactory.GetCurrentSession()
+                .CreateSQLQuery("UPDATE SupplierQuote SET QuoteState=:quotestate where InquiryTitle=:title")
+                .SetParameter("quotestate", 3)
+                .SetParameter("title", supplierQuote.InquiryTitle)
+                .ExecuteUpdate();//把当条询价单标题下的所有报价单的状态都改为3，表示报价失败
+            return this.SaveOrUpdate(supplierQuote);//修改当前条报价单，表示报价成功。
         }
     }
 }
