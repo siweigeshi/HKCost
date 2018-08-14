@@ -11,3 +11,6 @@
     line-height: 150px;
     padding-left: 80px;
 }
+img.img-responsive {
+    padding-top: 5px;
+}
