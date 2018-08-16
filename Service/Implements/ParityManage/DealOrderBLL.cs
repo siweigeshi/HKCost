@@ -40,7 +40,7 @@ namespace Service.Implements.ParityManage
                 Swhere = where.ToString(),
                 Sort = sort,
                 ObjName = "DealOrderList",
-                Igorelist = new List<string>()
+                Igorelist = new List<string>() { "Users"}
             };
             QueryParameter query = new QueryParameter("DealOrder", pageParm.Swhere, pageParm, null);
             return GetAllPageList(query);

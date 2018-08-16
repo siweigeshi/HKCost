@@ -11,7 +11,6 @@
         factory.GetDealOrderList = function (page, limit, swhere, sort) {
             return $http.get('/api/DealOrder/GetDealOrderList?ct=json&page=' + page + '&limit=' + limit + '&swhere=' + swhere + '&sort=' + sort, null);
         }
-      
 
 
         return factory;
@@ -23,8 +22,9 @@
         function loadTable() {
             $scope.parentTableParams.reload();
         }
-        //获取当前用户
-        var user;
+    
+        var user;    //获取当前用户
+        var tableList = [];//存放成交表信息
         DealOrderService.GetUserName().success(function (dataName) {
             user = dataName;
         })
@@ -54,7 +54,7 @@
             $scope.reset(); //reset() 方法可把表单中的元素重置为它们的默认值。
         }
 
-        var tableList = [];//存放成交表信息
+    
         //获取数据
         $scope.TableBind = function ($defer, params, sortList, func) {
             DealOrderService.GetDealOrderList(params.page(), params.count(), $scope.extraParams.swhere, JSON.stringify(sortList)).success(function (data) {

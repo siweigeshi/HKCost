@@ -24,7 +24,7 @@ namespace Domain.CostSystem
         /// <summary>
         /// 报价金额
         /// </summary>
-        public virtual float QuotedPrice { get; set; }
+        public virtual string QuotedPrice { get; set; }
         /// <summary>
         /// 品牌
         /// </summary>

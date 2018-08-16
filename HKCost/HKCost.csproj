@@ -2047,6 +2047,7 @@
     <Content Include="Content\ParityManage\Parity.css" />
     <Content Include="Content\QuoteManage\QuoteManage.css" />
     <Content Include="Content\QuoteManage\Quote.css" />
+    <Content Include="Content\ResultManage\ResultBulletin.css" />
     <Content Include="Content\topnavbar\TopNavbar.css" />
     <Content Include="FakesAssemblies\Autofac.Integration.WebApi.3.4.0.0.Fakes.dll" />
     <Content Include="FakesAssemblies\Autofac.Integration.WebApi.3.4.0.0.Fakes.xml" />
@@ -2192,6 +2193,7 @@
     <Content Include="Scripts\App\Modules\preloader\preloader.directive.js" />
     <Content Include="Scripts\App\Modules\preloader\preloader.module.js" />
     <Content Include="Scripts\App\Modules\quotemanage\quotemanage.controller.js" />
+    <Content Include="Scripts\App\Modules\resultmanage\resultbulletin.controller.js" />
     <Content Include="Scripts\App\Modules\routes\route-helpers.provider.js" />
     <Content Include="Scripts\App\Modules\routes\routes.config.js" />
     <Content Include="Scripts\App\Modules\routes\routes.module.js" />
@@ -3199,6 +3201,7 @@
     <Content Include="View\Partials\TopNavbarH.html" />
     <Content Include="View\QuoteManage\QuoteManage.html" />
     <Content Include="View\QuoteManage\QuoteSheet.html" />
+    <Content Include="View\ResultManage\ResultBulletin.html" />
     <Content Include="View\System\ButtonInfo.html" />
     <Content Include="View\System\dictionary.html" />
     <Content Include="View\System\module.html" />

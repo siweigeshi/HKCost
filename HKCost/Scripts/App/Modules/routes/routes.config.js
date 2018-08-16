@@ -198,6 +198,41 @@
                     }
                 ]
             })
+            .state('ResultManage', {
+                abstract: true,
+                url: '/ResultManage',
+                title: '报价公示',
+                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'ngTable', 'ngDialog',
+                    'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl', 'oitozero.ngSweetAlert'),
+                views: {
+                    'content': {
+                        template: '<div data-ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="content-wrapper"></div>'
+                    }
+                }
+            })
+            .state('ResultManage.ResultBulletin', {
+                url: '/ResultBulletin',
+                title: '结果公示',
+                templateUrl: '/view/resultmanage/ResultBulletin.html',
+                resolve: [
+                    '$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                files: [
+                                    '/Scripts/Vendor/ng-table/dist/ng-table.min.js',
+                                    '/Scripts/Vendor/ngDialog/js/ngDialog.min.js',
+                                    '/Scripts/Vendor/angular-sweetalert/SweetAlert.js',
+                                    '/Scripts/App/Modules/common/sweetalert.min.js',
+                                    '/Scripts/App/Modules/common/jquery-ui.min.js',
+                                    '/Scripts/app/modules/resultmanage/resultbulletin.controller.js',
+                                    '/Scripts/app/modules/common/potting.table.directive.js',
+                                    '/Scripts/app/modules/common/common.buttonsmenu.directive.js'
+                                ]
+                            }
+                        ]);
+                    }
+                ]
+            })
             .state('InquieySheetManage', {
                 abstract: true,
                 url: '/InquieySheetManage',

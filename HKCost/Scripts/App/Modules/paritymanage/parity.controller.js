@@ -32,6 +32,11 @@
             return $http.post('/api/DealOrder/PostDealOrderSave?ct=json', dealorderList);
         }
 
+        //通过标题找到所有的报价记录（先不用）
+        factory.GetQuoteResultList = function (swhere) {
+            return $http.get('/api/Quote/GetQuoteResultList?ct=json&swhere=' + swhere, null)
+        };
+
         return factory;
     }
     ParityController.$inject = ['$scope', 'Notify', '$filter', '$resource', '$timeout', "$element", 'ngTableParams', '$http', 'ngDialog', '$uibModal', 'SweetAlert', 'ParityService'];
@@ -69,7 +74,7 @@
             swhere: ''
         };
         var tableList = [];//存放询价表数据
-       
+
 
         //获取报价表数据绑定到表格
         $scope.TableBind = function ($defer, params, sortList, func) {
@@ -92,7 +97,6 @@
                     }
                 },
                 size: 'lg'
-
             })
         };
 
@@ -101,6 +105,7 @@
             var QuoSheet = {};
             QuoSheet = tableList[index];//把当前数组中数据绑定到前台
             QuoSheet.QuoteState = 2;//修改本条数据报价单中的状态改为2
+
             ParityService.PostQuoteStatusSave(QuoSheet).success(function () {//保存选中的报价单中 的数据
                 ParityService.GetQuoteManageListswhere(tableList[index].InquiryTitle).success(function (data) {//通过标题来寻找当前询价单的数据
                     $scope.InquirysSheet = data[0];
@@ -117,6 +122,19 @@
                     Order.GoodsName = $scope.InquirysSheet.GoodsName;
                     Order.Contacts = QuoSheet.Contacts;
                     Order.Tel = QuoSheet.Tel;
+
+                    //通过标题获取所有报价信息，把报价信息的OID存入关联表
+                    ////var userLists = [];
+                    //Order.Users = [];
+                    ////userLists = ParityService.GetQuoteResultList(QuoSheet.InquiryTitle);
+                    //Tools.Method.GetAjaxEncap('/api/Quote/GetQuoteResultList?ct=json&swhere='+ QuoSheet.InquiryTitle, 'GET', null, false, function (datatitle) {
+                    //    //userLists = data;
+                    //    for (var i = 0; i < datatitle.length; i++) {
+                    //        $scope.userListname = {};
+                    //        $scope.userListname.OID = datatitle[i].OID;
+                    //        Order.Users.unshift($scope.userListname);
+                    //    }
+                    //})
                     ParityService.PostDealOrderSave(Order);//增加交易单记录
 
                 })

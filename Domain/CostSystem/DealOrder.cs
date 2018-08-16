@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace Domain.CostSystem
         /// <summary>
         /// 采购金额
         /// </summary>
-        public virtual float QuotedPrice { get; set; }
+        public virtual string QuotedPrice { get; set; }
         /// <summary>
         /// 货物名称
         /// </summary>
@@ -60,6 +61,25 @@ namespace Domain.CostSystem
         #endregion
 
         #region 关系
+        /// <summary>
+        /// 交易订单和用户表之间多对多关系
+        /// </summary>
+        private ISet<Base_UserInfo> _Users = null;
+        public virtual ISet<Base_UserInfo> Users
+        {
+            get
+            {
+                if (null == this._Users)
+                {
+                    this._Users = new HashSet<Base_UserInfo>();
+                }
+                return this._Users;
+            }
+            set
+            {
+                this._Users = value;
+            }
+        }
         #endregion
     }
     public class DealOrderMap:EntityBaseMap<DealOrder>
@@ -83,7 +103,11 @@ namespace Domain.CostSystem
             #endregion
 
             #region 关系映射
-           
+            HasManyToMany<Base_UserInfo>(o => o.Users)
+           .AsSet()
+           .ParentKeyColumn("DealOrderOID")
+           .ChildKeyColumn("UserOID")
+           .Table("User_Deal");
             #endregion
         }
 

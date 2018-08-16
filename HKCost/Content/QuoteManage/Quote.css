@@ -11,6 +11,10 @@ body {
     color: #333;
     background-color: #f2f2f2;
 }
+/*   *样式   */
+.am-text-danger {
+    color: #dd514c;
+}
 /*时间插件样式覆盖*/
 .ui-widget-header {
     border: 1px solid #fff;

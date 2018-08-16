@@ -37,6 +37,18 @@ namespace HKCost.Controllers.QuoteManage
         {
             return _quoteBll.GetQuoteList(page, limit, swhere, sort);
         }
+        /// <summary>
+        /// 获取报价表报价成功的数据
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="limit"></param>
+        /// <param name="swhere"></param>
+        /// <param name="sort"></param>
+        /// <returns></returns>
+        public object GetQuoteResultList(int page, int limit, string swhere, string sort)
+        {
+            return _quoteBll.GetQuoteResultList(page, limit, swhere, sort);
+        }
 
         /// <summary>
         /// 保存报价表信息
