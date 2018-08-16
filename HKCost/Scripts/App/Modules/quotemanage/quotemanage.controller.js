@@ -37,6 +37,7 @@
 
         $scope.status = [];//存放询价单状态
         $scope.isEdit = [];//是否可修改
+        $scope.isDelete = [];//是否可修改
      
         var tableList = [];//定义存放数据的数组
         var user;//定义当前用户
@@ -84,14 +85,17 @@
                     if (data.QuoteManageList[i].QuoteState == 3) {
                         $scope.status[i] = "报价失败";
                         $scope.isEdit[i] = false;
+                        $scope.isDelete[i] = true;
                     }
                     else if (data.QuoteManageList[i].QuoteState == 2) {
                         $scope.status[i] = "报价成功";
                         $scope.isEdit[i] = false;
+                        $scope.isDelete[i] = true;
                     }
                     else {
                         $scope.status[i] = "已报价";
                         $scope.isEdit[i] = true;
+                        $scope.isDelete[i] = false;
                     }
                 }
             });
@@ -116,20 +120,6 @@
 
         //删除方法
         $scope.delete = function (OID) {
-            var delLength = 0;
-            //var delTemp = [];
-            //for (var i = 0; i < tableList.length; i++) {
-            //    if ($scope.checkboxes.items[tableList[i].OID]) {
-            //        delTemp.push(tableList[i]);//把整条数据填充到删除数组中
-            //        delLength++;//复选框被选中的个数
-            //        $scope.checkboxes.items[tableList[i].OID] = false;
-            //    }
-            //}
-            //if (delLength == 0) {
-            //    delTemp.push(tableList[index]);
-            //}
-            //if (delLength > 0 || index>=0) {
-                //弹出确认框
                 SweetAlert.swal({
                     title: '确定删除吗？',
                     text: '删除后您将不能恢复选中的报价单',
@@ -147,11 +137,7 @@
                         });
                     }
                 });
-            //}
-            //else if (delLength == 0 && index == undefined) {
-            //    SweetAlert.swal('请选择要删除的数据!',  'danger');
-            //    //Notify.alert('请选择要删除的数据！', { status: 'danger' });
-            //}
+        
         }
 
         //修改

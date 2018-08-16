@@ -108,13 +108,16 @@
                     $scope.status[i] = "询价中";
                     $scope.isEdit[i] = false;
                     $scope.isDelete[i] = false;
-                    if (data.inquiryList[i].BuyCompanyName == user) {
+                    if (data.inquiryList[i].BuyCompanyName == user) {//当采购人为自己的时候，显示修改和删除按钮
                         $scope.isEdit[i] = true;
                         $scope.isDelete[i] = true;
                     }
-                    if (data.inquiryList[i].BuyState == 2) {
+                    if (data.inquiryList[i].BuyState == 2) {//如果当前询价单状态为询价结束，则隐藏修改按钮
                         $scope.status[i] = "询价结束";
                         $scope.isEdit[i] = false;
+                    }
+                    if (data.inquiryList[i].BuyState == 1) {   //隐藏删除按钮（当询价单处于询价中状态是 不能删除）
+                        $scope.isDelete[i] = false;
                     }
                 }
             });
@@ -136,25 +139,9 @@
 
         //删除方法
         $scope.delete = function (OID) {
-            
-
-            var delLength = 0;
-            //var delTemp = [];
-            //for (var i = 0; i < tableList.length; i++) {
-            //    if ($scope.checkboxes.items[tableList[i].OID]) {
-            //        delTemp.push(tableList[i]);//把整条数据填充到删除数组中
-            //        delLength++;//复选框被选中的个数
-            //        $scope.checkboxes.items[tableList[i].OID] = false;
-            //    }
-            //}
-            //if (delLength == 0) {
-            //    delTemp.push(tableList[index]);
-            //}
-            //if (delLength > 0 || index>=0) {
-                //弹出确认框
                 SweetAlert.swal({
                     title: '确定删除吗？',
-                    text: '删除后您将不能恢复选中的任务',
+                    text: '删除后您将不能恢复选中的询价单',
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#DD6B55',
@@ -165,16 +152,11 @@
                     if (isConfirm) {
                         InquiryService.PostInquiryDelete(OID).success(function () {
 
-                            SweetAlert.swal('删除成功!', '选中任务已被删除', 'success');
+                            SweetAlert.swal('删除成功!', '选中询价单已被删除', 'success');
                             loadTable();
                         });
                     }
                 });
-            //}
-            //else if (delLength == 0 && index == undefined) {
-            //    SweetAlert.swal('请选择要删除的数据!',  'danger');
-            //    //Notify.alert('请选择要删除的数据！', { status: 'danger' });
-            //}
         }
         //增加询价单
         $scope.addSheet = function (index) {

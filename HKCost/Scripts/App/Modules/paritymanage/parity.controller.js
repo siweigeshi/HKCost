@@ -93,7 +93,7 @@
                 controller: function ($scope, $uibModalInstance) {
                     $scope.QuoSheet = tableList[index];//把当前数组中数据绑定到前台
                     $scope.cancel = function () {
-                        $uibModalInstance.dismiss('cannel');
+                        $uibModalInstance.dismiss('cancel');
                     }
                 },
                 size: 'lg'

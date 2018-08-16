@@ -58,7 +58,7 @@ namespace Service.Implements.QuoteManage
         public object GetQuoteResultList(int page, int limit, string swhere, string sort)
         {
             string user = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser).UserName;
-            List<String> IDs = SessionFactory.GetCurrentSession().QueryOver<SupplierQuote>().Where(o => o.QuotationCompany == user && o.STATE == 0).Select(t => t.InquiryTitle).List<string>().ToList();//获取我参与过的项目的名称
+            List<String> IDs = SessionFactory.GetCurrentSession().QueryOver<SupplierQuote>().Where(o => o.QuotationCompany == user).Select(t => t.InquiryTitle).List<string>().ToList();//获取我参与过的项目的名称
             StringBuilder where = new StringBuilder();//拼接查询条件（项目名称格式化）
             foreach (var ID in IDs)
             {
@@ -86,7 +86,7 @@ namespace Service.Implements.QuoteManage
                 List<SupplierQuote> upLoadList = Tools.ExecSqlHelp.ExecuteSql<SupplierQuote>("SELECT * FROM " +
                       //"SupplierQuote WHERE quotestate=2 and InquiryTitle in (lists)", new List<SqlParameter>(){
                       //     new SqlParameter(){ParameterName="lists",Value=ere}
-                      "SupplierQuote WHERE quotestate=2 and " + temp + " like '%" + temp1 + "%' and state=0 and InquiryTitle in (" + ere + ")", null);//拼接SQL进行查询
+                      "SupplierQuote WHERE quotestate=2 and " + temp + " like '%" + temp1 + "%' and InquiryTitle in (" + ere + ")", null);//拼接SQL进行查询
                 return Common.NewtonJsonHelper.Deserialize<object>("{\"curPage\":" + page + ",\"success\":true,\"total\":" + upLoadList.Count + ",\"QuoteResultList\":" + NewtonJsonHelper.Serialize(upLoadList, null) + "}", null);//构造返回数据
             }
             catch (Exception ee)

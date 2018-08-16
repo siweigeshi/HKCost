@@ -50,8 +50,8 @@
             <col width="2%" />
             <col width="4%" />
             <col width="15%" />
-            <col width="10%" />
-            <col width="7%" />
+            <col width="15%" />
+            <col width="15%" />
             <col width="7%" />
             <col width="8%" />
             <col width="8%" />
@@ -70,11 +70,10 @@
             </td>
             <td data-title="'序号'">{{$index+1}}</td>
             <td data-title="'询价标题'" sortable="'InquiryTitle'" ng-click="look($index)">{{result.InquiryTitle}}</td>
-            <td data-title="'报价人'" sortable="'BuyCompanyName'" ng-click="look($index)">{{result.QuotationCompany}}</td>
+            <td data-title="'采购单位'" sortable="'BuyCompanyName'" ng-click="look($index)">{{result.BuyCompanyName}}</td>
+            <td data-title="'报价成功单位'" sortable="'QuotationCompany'" ng-click="look($index)">{{result.QuotationCompany}}</td>
             <td data-title="'报价金额'" sortable="'QuotedPrice'" ng-click="look($index)">{{result.QuotedPrice}}</td>
             <td data-title="'联系人'" sortable="'Contacts'" ng-click="look($index)">{{result.Contacts}}</td>
-            <td data-title="'联系电话'" sortable="'Tel'" ng-click="look($index)">{{result.Tel}}</td>
-            <td data-title="'成交时间'" sortable="'CREATETIME'" ng-click="look($index)">{{result.CREATETIME}}</td>
             <td data-title="'操作'" class="middle">
                 <button type="button" class="btn btn-default" ng-click="lookResultBulletin($index)">查看详情</button>
             </td>
@@ -83,7 +82,7 @@
 </script>
 <!-- 显示页面的表格结束-->
 <!-- 结果公示查看模态框 -->
-<script type="text/ng-template" id="DealOrderSheetModal">
+<script type="text/ng-template" id="ResultBulletinModal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
             &times;
@@ -98,27 +97,24 @@
             <thead>
                 <tr>
                     <th>询价标题</th>
-                    <th>报价公司</th>
-                    <th>采购金额</th>
-                    <th>货物名称</th>
-                    <th>开始时间</th>
-                    <th>结束时间</th>
+                    <th>采购单位</th>
+                    <th>报价成功单位</th>
+                    <th>报价金额</th>
                     <th>联系人</th>
                     <th>联系电话</th>
-                    <th>成交时间</th>
+                    <th>报价时间</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{DealOrder.InquiryTitle}}</td>
-                    <td>{{DealOrder.QuotationCompany}}</td>
-                    <td>{{DealOrder.QuotedPrice}}</td>
-                    <td>{{DealOrder.GoodsName}}</td>
-                    <td>{{DealOrder.StartTime}}</td>
-                    <td>{{DealOrder.EndTime}}</td>
-                    <td>{{DealOrder.Contacts}}</td>
-                    <td>{{DealOrder.Tel}}</td>
-                    <td>{{DealOrder.CREATETIME}}</td>
+                    <td>{{Result.InquiryTitle}}</td>
+                    <td>{{Result.BuyCompanyName}}</td>
+                    <td>{{Result.QuotationCompany}}</td>
+                    <td>{{Result.QuotedPrice}}</td>
+                    <td>{{Result.Contacts}}</td>
+                    <td>{{Result.Tel}}</td>
+                    <td>{{Result.CREATETIME}}</td>
+              
                 </tr>
             </tbody>
         </table>

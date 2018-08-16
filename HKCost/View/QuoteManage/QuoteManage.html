@@ -74,14 +74,14 @@
             <td data-title="'序号'">{{$index+1}}</td>
             <td data-title="'询价标题'" sortable="'InquiryTitle'" ng-click="look($index)">{{quoteSheet.InquiryTitle}}</td>
             <td data-title="'报价金额'" sortable="'QuotedPrice'" ng-click="look($index)">{{quoteSheet.QuotedPrice}}</td>
-            <td data-title="'报价品牌'" sortable="'Brand'" ng-click="look($index)">{{quoteSheet.Brand}}</td>
+            <td data-title="'物品品牌'" sortable="'Brand'" ng-click="look($index)">{{quoteSheet.Brand}}</td>
             <td data-title="'联系人'" sortable="'Contacts'" ng-click="look($index)">{{quoteSheet.Contacts}}</td>
             <td data-title="'电话'" sortable="'Tel'" ng-click="look($index)">{{quoteSheet.Tel}}</td>
             <td data-title="'报价状态'" style="color:red" ng-click="look($index)">{{status[$index]}}</td>
             <td data-title="'操作'" class="middle">
                 <button type="button" class="btn btn-default" ng-click="lookQuoteSheet($index)">查看</button>
                 <button class="btn btn-default btn-success" ng-click="Edit($index)" ng-if="isEdit[$index]">修改</button>
-                <button class="btn btn-default btn-danger" ng-click="delete(quoteSheet.OID)">删除</button>
+                <button class="btn btn-default btn-danger" ng-click="delete(quoteSheet.OID)" ng-if="isDelete[$index]">删除</button>
 
             </td>
         </tr>

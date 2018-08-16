@@ -61,7 +61,7 @@ namespace Service.Implements.QouteManage
         /// <returns></returns>
         public object GetQuoteManageListswhere(string swhere)
         {
-            IList<BuyInquiry> list = SessionFactory.GetCurrentSession().QueryOver<BuyInquiry>().Where(x => x.InquiryTitle == swhere).List<BuyInquiry>().ToList();
+            IList<BuyInquiry> list = SessionFactory.GetCurrentSession().QueryOver<BuyInquiry>().Where(x => x.InquiryTitle == swhere  && x.STATE==0).List<BuyInquiry>().ToList();
             return Common.NewtonJsonHelper.Deserialize<object>(Common.NewtonJsonHelper.Serialize(list, null), null);
         }
         /// <summary>

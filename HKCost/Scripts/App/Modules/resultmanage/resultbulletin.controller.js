@@ -69,6 +69,18 @@
                 func(data.QuoteResultList);//数据刷新
             });
         }
+        $scope.lookResultBulletin = function (index) {
+            var lookModal = $uibModal.open({
+                templateUrl: 'ResultBulletinModal',
+                controller: function ($scope, $uibModalInstance) {
+                    $scope.Result = tableList[index];
+                    $scope.cancel = function () {
+                        $uibModalInstance.dismiss('cancel');
+                    }
+                },
+                size: 'lg'
+            })
+        };
 
 
     }
