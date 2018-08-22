@@ -61,7 +61,7 @@ namespace Service.Implements.BaseCode
         /// <summary>
         /// 判断登录用户名是否重复
         /// </summary>
-        /// <param name="UserName">用户名或邮箱或手机号</param>
+        /// <param name="UserName">用户名或邮箱</param>
         /// <returns>ture/false</returns>
         public bool GetJudgeUserName(string UserName)
         {

@@ -1,0 +1,31 @@
+﻿<link rel='stylesheet prefetch' href='https://unpkg.com/ng-table/bundles/ng-table.min.css'>
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog-theme-default.min.css" rel="stylesheet" />
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog.min.css" rel="stylesheet" />
+<link href="/Content/common/jquery-ui.min.css" rel="stylesheet" />
+<link href="/Content/common/sweetalert.css" rel="stylesheet" />
+<link href="/Content/HomePage/PersonRePwd.css" rel="stylesheet" />
+
+
+<div class="content-heading">
+    修改密码
+</div>
+<div class="BodyStyle">
+    <div ng-controller="RegisterFormController as reg">
+        <form role="form" name="reg.registerForm" novalidate="" ng-submit="reg.register()" class="form-validate mb-lg">
+                <div class="form-group has-feedback">
+                    <label class="text-muted">新密码</label>
+                    <input id="id-password" type="password" name="account_password" ng-model="reg.register.password" placeholder="请输入新密码" ng-pattern="/^[a-zA-Z0-9]{6,10}$/" required="" class="form-control" />
+                    <span class="fa fa-lock form-control-feedback text-muted"></span>
+                    <span ng-show="reg.registerForm.account_password.$dirty &amp;&amp; reg.registerForm.account_password.$error.required" class="text-danger">密码不能为空</span>
+                    <span ng-show="reg.registerForm.account_password.$dirty &amp;&amp; reg.registerForm.account_password.$error.pattern" class="text-danger">输入6-10位并为数字和字符结合</span>
+                </div>
+                <div class="form-group has-feedback">
+                    <label class="text-muted">确认新密码</label>
+                    <input type="password" name="account_password_confirm" ng-model="reg.register.account_password_confirm" placeholder="请再次输入密码" ui-validate="'$value==reg.register.password'" ui-validate-watch="'password'" class="form-control" />
+                    <span class="fa fa-lock form-control-feedback text-muted"></span>
+                    <span ng-show="reg.registerForm.account_password_confirm.$dirty &amp;&amp; reg.registerForm.account_password_confirm.$error.validator" class="text-danger">两次密码不一致</span>
+                </div>
+                <button class="btn btn-primary btn-block" ng-click="resetPwd()">确定重置</button>
+            </form>
+    </div>
+</div>

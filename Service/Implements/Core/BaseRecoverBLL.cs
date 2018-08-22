@@ -41,17 +41,19 @@ namespace Service.Implements.Core
             if(data.VDATETIME < DateTime.Now) return "date";
             return data.OID;
         }
-        public bool PostResetPwdUpdate(string OID, string newPwd, string captcha)
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="OID"></param>
+        /// <param name="newPwd"></param>
+        /// <returns></returns>
+        public bool PostResetPwdUpdate(string newPwd)
         {
-
+            string username= SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser).UserName;
             Base_UserInfo data = SessionFactory.GetCurrentSession().QueryOver<Base_UserInfo>()
-                .Where(t => t.OID == OID).List<Base_UserInfo>().FirstOrDefault();
+                .Where(t => t.UserName == username).List<Base_UserInfo>().FirstOrDefault();
             data.UserPwd = newPwd;
-            if (data.VCODE == captcha)
-            {
-                return this.Update(data);
-            }
-            return false;
+            return this.Update(data);
         }
         
         

@@ -36,6 +36,7 @@
         ResultBulletinService.GetUserName().success(function (dataName) {
             user = dataName;
         })
+        $scope.username = user;
         //重置按钮
         $scope.reset = function () {
             $scope.searchField = 'InquiryTitle';
@@ -67,13 +68,38 @@
                 tableList = data.QuoteResultList;
                 $defer.resolve(data.QuoteResultList);//$ defer是用于解析依赖关系和呈现最终数据的promise对象。
                 func(data.QuoteResultList);//数据刷新
+                for (var i = 0; i < data.QuoteResultList.length; i++) {
+                    if (data.QuoteResultList[i].QuotationCompany == user) {
+                        //$('#CompanyClass ng-binding').addClass('color:red;');
+                        //var elm = document.getElementById('CompanyClass');
+                        //if (elm.textContent == user)
+                        //    elm.style.color = 'red';
+                     
+                    }
+                }
+               
             });
         }
+
+        //var sidebar = document.getElementsById('CompanyClass');
+        //if (sidebar.textContent == user)
+        //    sidebar.style.color = 'red';
+        //angular.element(document).ready(function () {
+        //    var elm = document.getElementById('CompanyClass');
+        //    if (elm.textContent == user)
+        //        elm.style.color = 'red';
+        //})
+       
+
+ 
+        //查看模态框
         $scope.lookResultBulletin = function (index) {
             var lookModal = $uibModal.open({
                 templateUrl: 'ResultBulletinModal',
                 controller: function ($scope, $uibModalInstance) {
                     $scope.Result = tableList[index];
+                    var elm = document.getElementById('CompanyClass');
+                    elm.style.color = 'red';
                     $scope.cancel = function () {
                         $uibModalInstance.dismiss('cancel');
                     }

@@ -144,7 +144,7 @@ namespace Service.Implements.QuoteManage
             //    return null;
             //}
             /***/
-#endif
+#endif 
         }
         /// <summary>
         /// 通过采购商名称来获取此用户的询价记录

@@ -384,6 +384,41 @@
                     }
                 ]
             })
+            .state('PersonManage', {
+                abstract: true,
+                url: '/PersonManage',
+                title: '个人信息管理',
+                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'ngTable', 'ngDialog',
+                    'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl', 'oitozero.ngSweetAlert'),
+                views: {
+                    'content': {
+                        template: '<div data-ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="content-wrapper"></div>'
+                    }
+                }
+            })
+            .state('PersonManage.PwdManage', {
+                url: '/PwdManage',
+                title: '密码管理',
+                templateUrl: '/view/PersonManage/PerResetPwd.html',
+                resolve: [
+                    '$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                files: [
+                                    '/Scripts/Vendor/ng-table/dist/ng-table.min.js',
+                                    '/Scripts/Vendor/ngDialog/js/ngDialog.min.js',
+                                    '/Scripts/Vendor/angular-sweetalert/SweetAlert.js',
+                                    '/Scripts/App/Modules/common/sweetalert.min.js',
+                                    '/Scripts/App/Modules/common/jquery-ui.min.js',
+                                    '/Scripts/app/modules/personmanage/PwdManage.controller.js',
+                                    '/Scripts/app/modules/common/potting.table.directive.js',
+                                    '/Scripts/app/modules/common/common.buttonsmenu.directive.js'
+                                ]
+                            }
+                        ]);
+                    }
+                ]
+            })
             .state('page', {
                 url: '/page',
                 abstract: true,
@@ -408,7 +443,7 @@
                 //templateUrl: helper.basepath('Page/Register')
                 templateUrl: '/view/page/Register.html'
                 //resolve: helper.resolveFor('modernizr', 'icons')
-            })
+            }) 
             .state('page.maintenance', {
                 url: '/maintenance',
                 title: 'maintenance',

@@ -51,16 +51,20 @@ namespace HKCost.Controllers.Base
         /// <param name="permission">保存的实体对象</param>
         /// <returns></returns>
         public bool PostSave(Base_UserInfo PostClass)
-        {
-            //object obj1 = new { Users = PostClass.OID, Roles = "[\"1C9402CB-33A5-414A-B961-A92D011B9B92\"]" };
-            //PostClass obj = new PostClass()
-            //{
-            //    PostData = obj1.ToString()
-            //};
-            //_userInfoBll.SaveUserRoleRelation(obj);
+        { 
             return _userInfoBll.SaveOrUpdate(PostClass);
-           
         }
+      
+        /// <summary>
+        /// 查询用户名是否相同
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public bool GetJudgeUserName(string Name)
+        {
+            return _codeBll.GetJudgeUserName(Name);
+        }
+
         /// <summary>
         /// 验证用户名和密码
         /// 返回结果为json
@@ -359,9 +363,14 @@ namespace HKCost.Controllers.Base
         //    dynamic postData = Common.NewtonJsonHelper.Deserialize<dynamic>(data.PostData, null);
         //    return _recoverBLL.PostResetPwd(Convert.ToString(postData.OID), Convert.ToString(postData.newPwd));
         //}
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public object PostResetPwdUpdate(Base_UserInfo user)
         {
-            return _recoverBLL.PostResetPwdUpdate(user.OID, user.UserPwd, user.VCODE);
+            return _recoverBLL.PostResetPwdUpdate(user.UserPwd);
         }
         /// <summary>
         /// 判断验证信息是否超时

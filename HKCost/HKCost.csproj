@@ -2040,6 +2040,7 @@
     <Content Include="Content\HomePage\font-awesome.css" />
     <Content Include="Content\HomePage\font-awesome.min.css" />
     <Content Include="Content\HomePage\HomePage.css" />
+    <Content Include="Content\HomePage\PersonRePwd.css" />
     <Content Include="Content\InquiryManage\Images\ui-icons.png" />
     <Content Include="Content\InquiryManage\Inquiry.css" />
     <Content Include="Content\mvc-override.css" />
@@ -2190,6 +2191,7 @@
     <Content Include="Scripts\App\Modules\pages\recover.module.js" />
     <Content Include="Scripts\App\Modules\paritymanage\dealorder.controller.js" />
     <Content Include="Scripts\App\Modules\paritymanage\parity.controller.js" />
+    <Content Include="Scripts\App\Modules\personmanage\PwdManage.controller.js" />
     <Content Include="Scripts\App\Modules\preloader\preloader.directive.js" />
     <Content Include="Scripts\App\Modules\preloader\preloader.module.js" />
     <Content Include="Scripts\App\Modules\quotemanage\quotemanage.controller.js" />
@@ -3187,6 +3189,7 @@
     <Content Include="View\Page\Error500.html" />
     <Content Include="View\Page\Login.html" />
     <Content Include="View\Page\Maintenance.html" />
+    <Content Include="View\PersonManage\PerResetPwd.html" />
     <Content Include="View\Page\Recover.html" />
     <Content Include="View\Page\Register.html" />
     <Content Include="View\Page\ResetPwd.html" />
@@ -3202,6 +3205,7 @@
     <Content Include="View\QuoteManage\QuoteManage.html" />
     <Content Include="View\QuoteManage\QuoteSheet.html" />
     <Content Include="View\ResultManage\ResultBulletin.html" />
+    <Content Include="View\ResultManage\ResultBulletin2.html" />
     <Content Include="View\System\ButtonInfo.html" />
     <Content Include="View\System\dictionary.html" />
     <Content Include="View\System\module.html" />

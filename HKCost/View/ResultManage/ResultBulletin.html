@@ -3,7 +3,6 @@
 <link href="/Scripts/Vendor/ngDialog/css/ngDialog.min.css" rel="stylesheet" />
 <link href="/Content/common/jquery-ui.min.css" rel="stylesheet" />
 <link href="/Content/common/sweetalert.css" rel="stylesheet" />
-<link href="/Content/common/sweetalert.css" rel="stylesheet" />
 <link href="/Content/ResultManage/ResultBulletin.css" rel="stylesheet" />
 
 <div class="content-heading">
@@ -56,8 +55,6 @@
             <col width="8%" />
             <col width="8%" />
             <col width="12%" />
-            <!--<col width="15%" />-->
-
         </colgroup>
         <tr ng-repeat="result in $data" class="taskTr">
             <td header="'headerCheckbox.html'">
@@ -80,7 +77,25 @@
         </tr>
     </table>
 </script>
+
+<!--<script type="text/ng-template" id="table.html">
+    <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+        <colgroup>
+            <col width="4%" />
+            <col width="80%" />
+        </colgroup>
+        <tr ng-repeat="result in $data" class="taskTr">
+            <td data-title="'序号'">{{$index+1}}</td>
+            <td data-title="'询价标题'" sortable="'InquiryTitle'" ng-click="look($index)">关于【{{result.InquiryTitle}}】项目中标通知</td>
+            <td data-title="'操作'" class="middle">
+                <button type="button" class="btn btn-default" ng-click="lookResultBulletin($index)">查看详情</button>
+            </td>
+        </tr>
+    </table>
+</script>-->
 <!-- 显示页面的表格结束-->
+
+
 <!-- 结果公示查看模态框 -->
 <script type="text/ng-template" id="ResultBulletinModal">
     <div class="modal-header">

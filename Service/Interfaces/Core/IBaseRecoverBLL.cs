@@ -12,6 +12,6 @@ namespace Service.Interfaces.Core
     {
         //bool GetEmailUpdate(string email);
         string PostCheckCaptcha(string captcha, string email);
-        bool PostResetPwdUpdate(string OID, string newPwd, string captcha);
+        bool PostResetPwdUpdate(string newPwd);
     }
 }
