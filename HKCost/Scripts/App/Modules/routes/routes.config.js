@@ -419,6 +419,31 @@
                     }
                 ]
             })
+            .state('PersonManage.PerQualify', {
+                url: '/PerQualify',
+                title: '企业资质认证',
+                templateUrl: '/view/PersonManage/PerQualify.html',
+                resolve: [
+                    '$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                files: [
+                                    '/Scripts/Vendor/ng-table/dist/ng-table.min.js',
+                                    '/Scripts/Vendor/ngDialog/js/ngDialog.min.js',
+                                    '/Scripts/Vendor/angular-sweetalert/SweetAlert.js',
+                                    '/Scripts/App/Modules/common/sweetalert.min.js',
+                                    '/Scripts/App/Modules/common/jquery-ui.min.js',
+                                    '/Scripts/app/modules/common/ajaxfileupload.js',
+                                    '/Scripts/app/modules/common/jquery.cookie.js',
+                                    '/Scripts/app/modules/personmanage/PerQualify.controller.js',
+                                    '/Scripts/app/modules/common/potting.table.directive.js',
+                                    '/Scripts/app/modules/common/common.buttonsmenu.directive.js'
+                                ]
+                            }
+                        ]);
+                    }
+                ]
+            })
             .state('page', {
                 url: '/page',
                 abstract: true,

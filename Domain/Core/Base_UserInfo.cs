@@ -13,6 +13,30 @@ namespace Domain.Core
         public virtual int State { get; set; }
         public virtual string EMAIL { get; set; }
         public virtual string VCODE { get; set; }
+        /// <summary>
+        ///是否激活
+        /// </summary>
+        public virtual int IsActive { get; set; }
+        /// <summary>
+        /// 拒绝信息
+        /// </summary>
+        public virtual string DeMess { get; set; }
+        /// <summary>
+        /// 营业执照地址
+        /// </summary>
+        public virtual string BusinessImg { get; set; }
+        /// <summary>
+        /// 开户许可证地址
+        /// </summary>
+        public virtual string OpenImg { get; set; }
+        /// <summary>
+        /// 代理证件地址
+        /// </summary>
+        public virtual string AgentImg { get; set; }
+        /// <summary>
+        /// 信用截图地址
+        /// </summary>
+        public virtual string CreditImg { get; set; }
         public virtual Nullable<DateTime> VDATETIME { get; set; }
         /// <summary>
         /// 电话
@@ -74,6 +98,12 @@ namespace Domain.Core
             Map(x => x.State);
             Map(x => x.EMAIL);
             Map(x => x.VCODE);
+            Map(x => x.IsActive);
+            Map(x => x.DeMess);
+            Map(x => x.BusinessImg);
+            Map(x => x.OpenImg);
+            Map(x => x.AgentImg);
+            Map(x => x.CreditImg);
             Map(x => x.VDATETIME);
             Map(x => x.CONTACTS);
             Map(x => x.Tel);

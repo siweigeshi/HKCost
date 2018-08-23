@@ -1,0 +1,65 @@
+﻿<link rel='stylesheet prefetch' href='https://unpkg.com/ng-table/bundles/ng-table.min.css'>
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog-theme-default.min.css" rel="stylesheet" />
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog.min.css" rel="stylesheet" />
+<link href="/Content/common/jquery-ui.min.css" rel="stylesheet" />
+<link href="/Content/common/sweetalert.css" rel="stylesheet" />
+<link href="/Content/HomePage/PerQualify.css" rel="stylesheet" />
+
+ 
+<div class="content-heading">
+    企业资质认证
+</div>
+<!--主页面开始-->
+<div class="row task panel panel-default" ng-controller="PerQualifyController" id="tablePanel">
+
+    <input id="File1" type="file" onchange="angular.element(this).scope().myFunction(this.files)" />
+    <input id="Button1" type="button" value="button" ng-click="subPoatImg()" />
+
+
+    <!--<div class="col-xs-12 col-sm-4 col-md-2 ">
+        <div class="image">
+            <img ng-src="{{Model.Image}}" id="File" onerror="javascript: this.src = '/Images/user/user.jpg';" class="linkImg">
+        </div>
+        <div class="col-md-12">
+            <button id="exampleInputFile" ng-click="openUpload()" class="btn btn-info openUpload">浏览</button>
+            <p class="help-block">照片最佳为2寸，支持jpg.jpeg.gif格式（不能超过100kB）</p>
+            <button id="Set" ng-click="set()" style="display:none"></button>
+        </div>
+    </div>
+    <div class="modal fade" id="TeacherInfoModal"></div>-->
+
+    <ng-table></ng-table>
+</div>
+<!--主页面结束-->
+ 
+<!-- 显示页面的表格开始-->
+<!--<script type="text/ng-template" id="table.html">
+    <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+        <colgroup>
+            <col width="2%" />
+            <col width="4%" />
+            <col width="15%" />
+            <col width="10%" />
+            <col width="7%" />
+            <col width="7%" />
+            <col width="8%" />
+            <col width="8%" />
+            <col width="12%" />
+        </colgroup>
+        <tr ng-repeat="inquiry in $data" class="taskTr">
+            
+            <td data-title="'序号'">{{$index+1}}</td>
+            <td data-title="'询价标题'" sortable="'InquiryTitle'" ng-click="look($index)">{{inquiry.InquiryTitle}}</td>
+            <td data-title="'报价人'" sortable="'BuyCompanyName'" ng-click="look($index)">{{inquiry.QuotationCompany}}</td>
+            <td data-title="'报价金额'" sortable="'QuotedPrice'" ng-click="look($index)">{{inquiry.QuotedPrice}}</td>
+            <td data-title="'联系人'" sortable="'Contacts'" ng-click="look($index)">{{inquiry.Contacts}}</td>
+            <td data-title="'联系电话'" sortable="'Tel'" ng-click="look($index)">{{inquiry.Tel}}</td>
+            <td data-title="'报价时间'" sortable="'CREATETIME'" ng-click="look($index)">{{inquiry.CREATETIME}}</td>
+            <td data-title="'操作'" class="middle">
+                <button type="button" class="btn btn-default" ng-click="lookInquirySheet($index)">查看</button>
+                <button class="btn btn-default btn-success" ng-click="Choice($index)">选择此家</button>
+            </td>
+        </tr>
+    </table>
+</script>-->
+<!-- 显示页面的表格结束-->

@@ -469,9 +469,9 @@
     <Folder Include="Areas\ExtFrame\sass\etc\" />
     <Folder Include="Areas\ExtFrame\sass\src\" />
     <Folder Include="Areas\ExtFrame\sass\var\" />
-    <Folder Include="Scripts\App\Plugin\" />
     <Folder Include="Scripts\Vendor\angular-ui-grid\less\" />
     <Folder Include="Scripts\Vendor\codemirror\mode\rpm\changes\" />
+    <Folder Include="Upload\" />
     <Folder Include="View\common\" />
   </ItemGroup>
   <ItemGroup>
@@ -588,6 +588,18 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\App\Plugin\PlUpload\DeleteFile.ashx.cs">
+      <DependentUpon>DeleteFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\App\Plugin\PlUpload\DownloadFile.ashx.cs">
+      <DependentUpon>DownloadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\App\Plugin\PlUpload\GetTempFileInfo.ashx.cs">
+      <DependentUpon>GetTempFileInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Scripts\App\Plugin\PlUpload\UploadFile.ashx.cs">
+      <DependentUpon>UploadFile.ashx</DependentUpon>
     </Compile>
     <Compile Include="WebRequest\VerifyVis.ashx.cs">
       <DependentUpon>VerifyVis.ashx</DependentUpon>
@@ -2040,6 +2052,7 @@
     <Content Include="Content\HomePage\font-awesome.css" />
     <Content Include="Content\HomePage\font-awesome.min.css" />
     <Content Include="Content\HomePage\HomePage.css" />
+    <Content Include="Content\HomePage\PerQualify.css" />
     <Content Include="Content\HomePage\PersonRePwd.css" />
     <Content Include="Content\InquiryManage\Images\ui-icons.png" />
     <Content Include="Content\InquiryManage\Inquiry.css" />
@@ -2155,6 +2168,7 @@
     <Content Include="Scripts\App\Modules\common\common.animation.js" />
     <Content Include="Scripts\App\Modules\common\common.buttonsmenu.directive.js" />
     <Content Include="Scripts\App\Modules\common\jquery-ui.min.js" />
+    <Content Include="Scripts\App\Modules\common\jquery.cookie.js" />
     <Content Include="Scripts\App\Modules\common\modal.js" />
     <Content Include="Scripts\App\Modules\common\potting.table.directive.js" />
     <Content Include="Scripts\App\Modules\common\potting.tablePro.directive.js" />
@@ -2191,6 +2205,8 @@
     <Content Include="Scripts\App\Modules\pages\recover.module.js" />
     <Content Include="Scripts\App\Modules\paritymanage\dealorder.controller.js" />
     <Content Include="Scripts\App\Modules\paritymanage\parity.controller.js" />
+    <Content Include="Scripts\App\Modules\common\ajaxfileupload.js" />
+    <Content Include="Scripts\App\Modules\personmanage\PerQualify.controller.js" />
     <Content Include="Scripts\App\Modules\personmanage\PwdManage.controller.js" />
     <Content Include="Scripts\App\Modules\preloader\preloader.directive.js" />
     <Content Include="Scripts\App\Modules\preloader\preloader.module.js" />
@@ -2225,6 +2241,37 @@
     <Content Include="Scripts\App\Modules\utils\trigger-resize.directive.js" />
     <Content Include="Scripts\App\Modules\utils\utils.module.js" />
     <Content Include="Scripts\App\Modules\utils\utils.service.js" />
+    <Content Include="Scripts\App\Plugin\bootstrapUpload\fileinput.css" />
+    <Content Include="Scripts\App\Plugin\bootstrapUpload\fileinput.js" />
+    <Content Include="Scripts\App\Plugin\bootstrapUpload\fileinput_locale_zh.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\doc.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\docx.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\gif.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\jpg.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\other.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\png.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\ppt.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\pptx.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\rar.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\txt.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\xls.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\xlsx.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\icoImg\zip.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\layer\layer.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\layer\skin\default\icon-ext.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\layer\skin\default\icon.png" />
+    <Content Include="Scripts\App\Plugin\PlUpload\layer\skin\default\loading-0.gif" />
+    <Content Include="Scripts\App\Plugin\PlUpload\layer\skin\default\loading-1.gif" />
+    <Content Include="Scripts\App\Plugin\PlUpload\layer\skin\default\loading-2.gif" />
+    <Content Include="Scripts\App\Plugin\PlUpload\layer\skin\layer.css" />
+    <Content Include="Scripts\App\Plugin\PlUpload\modernizr-2.6.2.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\moxie.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\Moxie.swf" />
+    <Content Include="Scripts\App\Plugin\PlUpload\MyUpload.dev.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\PlUpload.css" />
+    <Content Include="Scripts\App\Plugin\PlUpload\plupload.dev.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\plupload.full.min.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\webWorkerEvent.js" />
     <Content Include="Scripts\Tools\FunctionJS.js" />
     <Content Include="Scripts\Tools\ToolsModal.js" />
     <Content Include="Scripts\Vendor\ag-grid\dist\ag-grid.js" />
@@ -3189,6 +3236,7 @@
     <Content Include="View\Page\Error500.html" />
     <Content Include="View\Page\Login.html" />
     <Content Include="View\Page\Maintenance.html" />
+    <Content Include="View\PersonManage\PerQualify.html" />
     <Content Include="View\PersonManage\PerResetPwd.html" />
     <Content Include="View\Page\Recover.html" />
     <Content Include="View\Page\Register.html" />
@@ -3288,6 +3336,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\App\Modules\quotemanage\quote.controller.js" />
+    <Content Include="Scripts\App\Plugin\PlUpload\DeleteFile.ashx" />
+    <Content Include="Scripts\App\Plugin\PlUpload\DownloadFile.ashx" />
+    <Content Include="Scripts\App\Plugin\PlUpload\GetTempFileInfo.ashx" />
+    <Content Include="Scripts\App\Plugin\PlUpload\Moxie.xap" />
+    <Content Include="Scripts\App\Plugin\PlUpload\UploadFile.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
