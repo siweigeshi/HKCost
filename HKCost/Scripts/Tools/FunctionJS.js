@@ -628,14 +628,14 @@ Tools.PlUpload.SingleInit = function (divid, fileSize, fileTypes, filePath, back
     dialogDiv.append(contentDiv);
     modulDiv.append(dialogDiv);
 
-    //引用文件
+    //引用文件 
     /* PlUpload 基础js和样式 */
-    CreateLink('/Areas/AdminLTE/plugins/PlUpload/moxie.js', 'js');
-    CreateLink('/Areas/AdminLTE/plugins/PlUpload/plupload.dev.js', 'js');
-    CreateLink('/Areas/AdminLTE/plugins/PlUpload/PlUpload.css', 'css');
+    CreateLink('/Scripts/App/Plugin/PlUpload/moxie.js', 'js');
+    CreateLink('/Scripts/App/Plugin/PlUpload/plupload.dev.js', 'js');
+    CreateLink('/Scripts/App/Plugin/PlUpload/PlUpload.css', 'css');
     /* 多线程上传文件js */
-    CreateLink('/Areas/AdminLTE/plugins/PlUpload/modernizr-2.6.2.js', 'js');
-    CreateLink('/Areas/AdminLTE/plugins/PlUpload/webWorkerEvent.js', 'js');
+    CreateLink('/Scripts/App/Plugin/PlUpload/modernizr-2.6.2.js', 'js');
+    CreateLink('/Scripts/App/Plugin/PlUpload/webWorkerEvent.js', 'js');
 
 
     var picShow = true;
@@ -645,9 +645,9 @@ Tools.PlUpload.SingleInit = function (divid, fileSize, fileTypes, filePath, back
     //实例化一个plupload上传对象
     var uploader = new plupload.Uploader({
         browse_button: 'browse', //触发文件选择对话框的按钮，为那个元素id
-        url: '/Areas/AdminLTE/plugins/PlUpload/UploadFile.ashx', //服务器端的上传页面地址
-        flash_swf_url: '/Areas/AdminLTE/plugins/PlUpload/Moxie.swf', //swf文件，当需要使用swf方式进行上传时需要配置该参数
-        silverlight_xap_url: '/Areas/AdminLTE/plugins/PlUpload/Moxie.xap', //silverlight文件，当需要使用silverlight方式进行上传时需要配置该参数
+        url: '/Scripts/App/Plugin/PlUpload/UploadFile.ashx', //服务器端的上传页面地址
+        flash_swf_url: '/Scripts/App/Plugin/PlUpload/Moxie.swf', //swf文件，当需要使用swf方式进行上传时需要配置该参数
+        silverlight_xap_url: '/Scripts/App/Plugin/PlUpload/Moxie.xap', //silverlight文件，当需要使用silverlight方式进行上传时需要配置该参数
         chunk_size: '512kb', //分片上传文件时，每片文件被切割成的大小，如"200kb"
         unique_names: true, //当值为true时会为每个上传的文件生成一个唯一的文件名
         filters: {
@@ -789,9 +789,9 @@ Tools.PlUpload.FormUploadShow = function (id, func, div) {
     dialogDiv.append(contentDiv);
     proDiv.append(dialogDiv);
     $('body').append(proDiv);
-    CreateLink('/Areas/AdminLTE/plugins/bootstrapUpload/fileinput.js', 'js');
+    CreateLink('/Scripts/App/Plugin/PlUpload/bootstrapUpload/fileinput.js', 'js');
     //CreateLink('/Areas/Web/js/plugins/bootstrapUpload/fileinput_locale_zh.js', 'js');
-    CreateLink('/Areas/AdminLTE/plugins/bootstrapUpload/fileinput.css', 'css');
+    CreateLink('/Scripts/App/Plugin/PlUpload/bootstrapUpload/fileinput.css', 'css');
     $('#' + id).modal('show');
 }
 /*导入上传页面关闭事件*/
@@ -913,6 +913,21 @@ Tools.Loading.Hide = function (loadId, delayTime) {
           function () {
               loadingMask.remove();
           });
+}
+
+/*********** js添加引用文件 ************/
+function CreateLink(Url, type) {
+    var head = $($('head')[0]), linkTag = null;
+    if (!Url) {
+        return false;
+    }
+    if (type == 'css') {
+        linkTag = $('<link href="' + Url + '" rel="stylesheet" type="text/css" />');
+        head.append(linkTag);
+    } else if (type = 'js') {
+        linkTag = $('<script src="' + Url + '" type="text/javascript" />');
+        head.append(linkTag);
+    }
 }
 /******  转换拼音的内部方法  ********/
 function arraySearch(l1, l2) {

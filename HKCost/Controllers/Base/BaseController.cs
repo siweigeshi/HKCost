@@ -14,6 +14,12 @@ using BLL.Interfaces.IBusiness.ICore;
 using Service.Interfaces.BaseCode;
 using System.Web;
 using Service.Interfaces.Core;
+using System.IO;
+using System.Net.Http;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace HKCost.Controllers.Base
 {
@@ -389,9 +395,43 @@ namespace HKCost.Controllers.Base
         public object PostChangePwdSave(PostClass PostClass)
         {
             return _authBll.PostChangePwdSave(PostClass);
-        }        
+        }
         #endregion
         #region 业务扩展方法
+        /// <summary>
+        /// 更新图片
+        /// </summary>
+        /// <param name="PostClass"></param>
+        /// <returns></returns>
+        public object PhotoUpdate(PostClass PostClass)
+        {
+            bool res = false;
+            dynamic dy = Common.NewtonJsonHelper.Deserialize<dynamic>(PostClass.PostData.ToString(), null);
+            string imgData = dy.dataUrl;
+            string imgUrl = dy.imgUrl;
+            string curUserOID = dy.curUserOID;
+            Base_UserInfo UserInfo = _userInfoBll.FindBy(t => t.OID == curUserOID).ToList<Base_UserInfo>().FirstOrDefault();
+            if (UserInfo != null)
+            {
+                string photo = Tools.ImgHelper.ImgUpload(imgData, imgUrl);
+                UserInfo.BusinessImg = photo;
+                res = _userInfoBll.SaveOrUpdate(UserInfo);
+            }
+            return res;
+        }
+        /// <summary>
+        /// 上传图片获取图片路径
+        /// </summary>
+        /// <param name="PostClass"></param>
+        /// <returns>图片路径</returns>
+        public object UploadPhoto(PostClass PostClass)
+        {
+            dynamic dy = Common.NewtonJsonHelper.Deserialize<dynamic>(PostClass.PostData.ToString(), null);
+            string imgData = dy.dataUrl;
+            string imgUrl = dy.imgUrl;
+            string ImgUrl = Tools.ImgHelper.ImgUpload(imgData, imgUrl);
+            return ImgUrl;
+        }
         /// <summary>
         /// 根据当前登陆的用户获取菜单
         /// </summary>

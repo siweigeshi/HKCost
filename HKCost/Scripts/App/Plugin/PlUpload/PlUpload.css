@@ -1,0 +1,40 @@
+﻿#PlUpload_div {
+    font-size: 12px;
+}
+
+#PlUpload_div p,#PlUpload_div div,#PlUpload_div #file-list {
+    padding: 0;
+    margin: 0;
+}
+#PlUpload_div #PlUpload_buttons{
+    background-color:#dfeaf2;
+    padding:5px;
+}
+#PlUpload_div #file-list {
+    width: 370px;
+    margin: 10px auto;
+    height:250px;
+    overflow:auto;
+}
+
+#PlUpload_div #file-list li {
+    margin-bottom: 10px;
+}
+
+#PlUpload_div .file-name {
+    line-height: 30px;
+}
+#PlUpload_div #file-list li a{
+    margin-right:8px;
+}
+#PlUpload_div #file-list li span {
+    float: right;
+}
+
+#PlUpload_div .progress {
+    height: 4px;
+    font-size: 0;
+    line-height: 4px;
+    background: orange;
+    width: 0;
+}

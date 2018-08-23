@@ -27,14 +27,21 @@ namespace Service.Implements.InquiryManage
         /// <returns></returns>
         public object GetInquiryList(int page, int limit, string swhere, string sort)
         {
-            string userName = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser).UserName;//获取用户名称
-            StringBuilder where = new StringBuilder();
-            swhere = swhere != null ? swhere.TrimEnd(',') + ",STATE|int|0|=" : "STATE|int|0|=";//构建查询语句
-            where.Append(swhere);
-            //where.AppendFormat(",(@BuyCompanyName|{0}|"+userName,userName);
-            PageParameter pagePara = new PageParameter() { PageIndex = page, Limit = limit, Swhere = where.ToString(), Sort = sort, ObjName = "inquiryList", Igorelist = new List<string>() };
-            QueryParameter query = new QueryParameter("BuyInquiry", pagePara.Swhere, pagePara, null);
-            return this.GetAllPageList(query);
+            int isActives = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser).IsActive;//获取用户名称
+            if (isActives==0)
+            {
+                return Common.NewtonJsonHelper.Deserialize<object>("{\"curPage\":" + page + ",\"success\":true,\"total\":" + 0 + ",\"QuoteResultList\":[]}", null);//构造返回数据
+            }
+            else
+            {
+                StringBuilder where = new StringBuilder();
+                swhere = swhere != null ? swhere.TrimEnd(',') + ",STATE|int|0|=" : "STATE|int|0|=";//构建查询语句
+                where.Append(swhere);
+                //where.AppendFormat(",(@BuyCompanyName|{0}|"+userName,userName);
+                PageParameter pagePara = new PageParameter() { PageIndex = page, Limit = limit, Swhere = where.ToString(), Sort = sort, ObjName = "inquiryList", Igorelist = new List<string>() };
+                QueryParameter query = new QueryParameter("BuyInquiry", pagePara.Swhere, pagePara, null);
+                return this.GetAllPageList(query);
+            }
         }
         /// <summary>
         /// 假删除
