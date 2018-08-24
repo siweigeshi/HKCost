@@ -12,10 +12,39 @@
 <!--主页面开始-->
 <div class="row task panel panel-default" ng-controller="PerQualifyController" id="tablePanel">
 
-    <input id="File1" type="file" onchange="angular.element(this).scope().myFunction(this.files)" />
-    <input id="Button1" type="button" value="button" ng-click="subPoatImg()" />
 
+    <h3 style="color:red">请供应商提交资质信息便于系统审核,如果提交的材料有任何伪造、修改、虚假等成份,造成的后果由已方自行承担；</h3>
 
+    <h4>1、请在①处上传 三证合一的营业执照副本 加盖公章的复印件。</h4>
+    <h4>2、请在②处上传 代理产品的代理证明 加盖公章的复印件。</h4>
+    <h4>3、请在③处上传 公司开户许可证 加盖公章的复印件。</h4>
+    <h4>4、请在④处上传 “信用中国”网站（www.creditchina.gov.cn）查询”无不良信用记录的查询截图 。</h4>
+
+    <table class="table table-condensed table-bordered table-striped table-hover " id="ss">
+        <tr>
+            <th>      <span style="color:red">①上传营业执照</span>   <input type="file" nv-file-select="" uploader="uploaderYZ" />  </th>
+            <th>      <span style="color:red">②上传代理许可</span>   <input type="file" nv-file-select="" uploader="uploaderDL" /> </th>
+        </tr>
+        <tr>
+            <td>   <img id="img-preview" ng-src="{{iconUrlYZ}}" style="max-width:300px;max-height:300px;display:block;">   </td>
+            <td>     <img id="img-preview" ng-src="{{iconUrlDL}}" style="max-width:300px;max-height:300px;display:block;">  </td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <th>          <span style="color:red">③上传开户许可</span>  <input type="file" nv-file-select="" uploader="uploaderKH" />  </th>
+            <th>         <span style="color:red">④上传信用截图</span>   <input type="file" nv-file-select="" uploader="uploaderXY" /> </th>
+        </tr>
+        <tr>
+            <td>     <img id="img-preview" ng-src="{{iconUrlKH}}" style="max-width:300px;max-height:300px;display:block;">  </td>
+            <td>      <img id="img-preview" ng-src="{{iconUrlXY}}" style="max-width:300px;max-height:300px;display:block;">  </td>
+        </tr>
+    </table>
+    <br />
+    <div style="text-align:center">
+        <button class="btn btn-default btn-success" ng-click="subPoatImg()">上传</button>
+    </div>
+   
+    <!--<input id="Button1" type="button" value="上传" ng-click="subPoatImg()" />-->
     <!--<div class="col-xs-12 col-sm-4 col-md-2 ">
         <div class="image">
             <img ng-src="{{Model.Image}}" id="File" onerror="javascript: this.src = '/Images/user/user.jpg';" class="linkImg">
@@ -33,7 +62,7 @@
 <!--主页面结束-->
  
 <!-- 显示页面的表格开始-->
-<!--<script type="text/ng-template" id="table.html">
+<script type="text/ng-template" id="table.html">
     <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
         <colgroup>
             <col width="2%" />
@@ -46,20 +75,15 @@
             <col width="8%" />
             <col width="12%" />
         </colgroup>
-        <tr ng-repeat="inquiry in $data" class="taskTr">
+        <tr class="taskTr">
             
-            <td data-title="'序号'">{{$index+1}}</td>
-            <td data-title="'询价标题'" sortable="'InquiryTitle'" ng-click="look($index)">{{inquiry.InquiryTitle}}</td>
-            <td data-title="'报价人'" sortable="'BuyCompanyName'" ng-click="look($index)">{{inquiry.QuotationCompany}}</td>
-            <td data-title="'报价金额'" sortable="'QuotedPrice'" ng-click="look($index)">{{inquiry.QuotedPrice}}</td>
-            <td data-title="'联系人'" sortable="'Contacts'" ng-click="look($index)">{{inquiry.Contacts}}</td>
-            <td data-title="'联系电话'" sortable="'Tel'" ng-click="look($index)">{{inquiry.Tel}}</td>
-            <td data-title="'报价时间'" sortable="'CREATETIME'" ng-click="look($index)">{{inquiry.CREATETIME}}</td>
-            <td data-title="'操作'" class="middle">
-                <button type="button" class="btn btn-default" ng-click="lookInquirySheet($index)">查看</button>
-                <button class="btn btn-default btn-success" ng-click="Choice($index)">选择此家</button>
-            </td>
+          
+            <td data-title="'用户名'" sortable="'InquiryTitle'" ng-click="look($index)">{{UserMess.USERNAME}}</td>
+            <td data-title="'报价人'" sortable="'BuyCompanyName'" ng-click="look($index)">{{UserMess.BusinessImg}}</td>
+            
+            <td data-title="'报价时间'" sortable="'CREATETIME'" ng-click="look($index)">{{UserMess.CREATETIME}}</td>
+          
         </tr>
     </table>
-</script>-->
+</script>
 <!-- 显示页面的表格结束-->

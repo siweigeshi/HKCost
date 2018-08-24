@@ -16,7 +16,7 @@ namespace Tools
         /// <param name="base64">base64图片数据</param>
         /// <param name="url">图片保存路径(相对网站根目录路径)</param>
         /// <returns>图片路径（相对路径）</returns>
-        public static string ImgUpload(string base64, string url)
+        public static string ImgUpload(string base64, string url,string name)
         {
             //图片相对路径,用来保存到数据库
             string imgUrl = string.Empty;
@@ -34,7 +34,8 @@ namespace Tools
             {
                 Directory.CreateDirectory(dir);
             } 
-            imgUrl = String.Format(url + "/{0}.{1}", Guid.NewGuid().ToString(), fileExtend);
+            //imgUrl = String.Format(url + "/{0}.{1}", Guid.NewGuid().ToString(), fileExtend);
+            imgUrl = String.Format(url + "/{0}.{1}", name, fileExtend);
             //图片绝对路径，用来做写入文件参数
             string saveUrl = HttpContext.Current.Server.MapPath("~/") + imgUrl;
             MemoryStream stream = new MemoryStream(bytes);
