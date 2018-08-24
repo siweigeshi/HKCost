@@ -33,7 +33,7 @@ namespace Tools
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
-            }
+            } 
             imgUrl = String.Format(url + "/{0}.{1}", Guid.NewGuid().ToString(), fileExtend);
             //图片绝对路径，用来做写入文件参数
             string saveUrl = HttpContext.Current.Server.MapPath("~/") + imgUrl;
