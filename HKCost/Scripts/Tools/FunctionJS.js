@@ -187,6 +187,75 @@ Tools.Method.GetPYByString = function (l1) {
     }
     return I1;
 }
+/**
+短暂提示
+msg: 显示消息
+time：停留时间ms
+type：类型 1：成功，2：失败，3：警告
+**/
+Tools.Method.ShowTipsMsg = function (msg, time, type, callback) {
+    if (type == 1) {
+        top.showTopMsg(msg, time, 'success', callback); //头部提示,1、success 2、error 3、warning
+    } else if (type == 2) {
+        top.showTopMsg(msg, time, 'error', callback); //头部提示,1、success 2、error 3、warning
+    } else if (type == 3) {
+        top.showTopMsg(msg, time, 'warning', callback); //头部提示,1、success 2、error 3、warning
+    }
+}
+/***************************** 自调用function ***************************/
+/**
+Top 加载对话窗
+msg:提示信息
+time：停留时间ms
+type：提示类型（1、success 2、error 3、warning）
+**/
+function showTopMsg(msg, time, type, callback) {
+    MsgTips(time, msg, 300, type, callback);
+}
+/***
+* 自动关闭弹出内容提示
+timeOut : 4000,				//提示层显示的时间
+msg : "恭喜你!你已成功操作此插件，谢谢使用！",			//显示的消息
+speed : 300,				//滑动速度
+type : "success"			//提示类型（1、success 2、error 3、warning）
+callback:callback()         //回调函数，提示面板关闭后执行
+***/
+function MsgTips(timeOut, msg, speed, type, callback) {
+    $(".tip_container").remove();
+    var bid = parseInt(Math.random() * 100000);
+    $("body").prepend('<div id="tip_container' + bid + '" class="container tip_container"><div id="tip' + bid + '" class="mtip"><span id="tsc' + bid + '"></span></div></div>');
+    var $this = $(this);
+    var $tip_container = $("#tip_container" + bid);
+    var $tip = $("#tip" + bid);
+    var $tipSpan = $("#tsc" + bid);
+    //先清楚定时器
+    clearTimeout(window.timer);
+    //主体元素绑定事件
+    $tip.attr("class", type).addClass("mtip");
+    $tipSpan.html(msg);
+    $tip_container.slideDown(speed);
+    //提示层隐藏定时器
+    window.timer = setTimeout(function () {
+        $tip_container.slideUp(speed);
+        $(".tip_container").remove();
+        if (callback != null) {
+            callback();
+        }
+    }, timeOut);
+    ////鼠标移到提示层时清除定时器
+    //$tip_container.live("mouseover", function () {
+    //    clearTimeout(window.timer);
+    //});
+    ////鼠标移出提示层时启动定时器
+    //$tip_container.live("mouseout", function () {
+    //    window.timer = setTimeout(function () {
+    //        $tip_container.slideUp(speed);
+    //        $(".tip_container").remove();
+    //    }, timeOut);
+    //});
+    $("#tip_container" + bid).css("left", ($(window).width() - $("#tip_container" + bid).width()) / 2);
+    //$("#tip_container" + bid).css("top", ($(window).height() - $("#tip_container" + bid).height()) / 2);
+}
 //*************** ajax捕捉异常处理封装 *****************
 Tools.Method.ExceptionEncapOp = function (XMLHttpRequest, textStatus, errorThrown) {
     angular.module('app').controller('AjaxController', AjaxController);

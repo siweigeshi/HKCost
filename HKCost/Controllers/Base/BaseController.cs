@@ -31,7 +31,7 @@ namespace HKCost.Controllers.Base
     /// </summary>
     public class BaseController : ApiController
     {
-        
+
         #region BLL的IoC映射
         private readonly IAuthenticationBLL _authBll;
         private readonly IReadWriteBLL<Base_Dictionary> _dicBll;
@@ -50,6 +50,17 @@ namespace HKCost.Controllers.Base
         #endregion
 
         #region 业务方法(基础)
+        
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <returns></returns>
+        public object GetUserMess()
+        {
+            Base_UserInfo _UserInfo = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser);
+            return _UserInfo;
+        }
+
         /// <summary>
         /// 保存
         /// 信息的添加或者修改保存
@@ -57,10 +68,10 @@ namespace HKCost.Controllers.Base
         /// <param name="permission">保存的实体对象</param>
         /// <returns></returns>
         public bool PostSave(Base_UserInfo PostClass)
-        { 
+        {
             return _userInfoBll.SaveOrUpdate(PostClass);
         }
-      
+
         /// <summary>
         /// 查询用户名是否相同
         /// </summary>
@@ -405,20 +416,75 @@ namespace HKCost.Controllers.Base
         /// <returns></returns>
         public object PhotoUpdate(PostClass PostClass)
         {
+            string name = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser).UserName;
+
             bool res = false;
             dynamic dy = Common.NewtonJsonHelper.Deserialize<dynamic>(PostClass.PostData.ToString(), null);
-            string imgData = dy.dataUrl;
-            string imgUrl = dy.imgUrl;
-            string curUserOID = dy.curUserOID;
-            Base_UserInfo UserInfo = _userInfoBll.FindBy(t => t.OID == curUserOID).ToList<Base_UserInfo>().FirstOrDefault();
+
+            string BusinessImg = "";//营业执照
+            string OpenImg = "";//开户许可
+            string AgentImg = "";//代理许可
+            string CreditImg = "";//信用网站截图
+            foreach (var item in dy)
+            {
+                string imgData = item.dataUrl;
+                string imgUrl = item.imgUrl;
+                string imgName = item.dataName;
+                if (imgName.Substring(imgName.Length - 4, 4) == "营业执照")
+                {
+                    BusinessImg = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
+                }
+                if (imgName.Substring(imgName.Length - 4, 4) == "开户许可")
+                {
+                    OpenImg = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
+                }
+                if (imgName.Substring(imgName.Length - 4, 4) == "代理许可")
+                {
+                    AgentImg = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
+                }
+                if (imgName.Substring(imgName.Length - 4, 4) == "信用截图")
+                {
+                    CreditImg = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
+                }
+            }
+            Base_UserInfo UserInfo = _userInfoBll.FindBy(t => t.UserName == name).ToList<Base_UserInfo>().FirstOrDefault();
             if (UserInfo != null)
             {
-                string photo = Tools.ImgHelper.ImgUpload(imgData, imgUrl);
-                UserInfo.BusinessImg = photo;
+                UserInfo.BusinessImg = BusinessImg;
+                UserInfo.OpenImg = OpenImg;
+                UserInfo.AgentImg = AgentImg;
+                UserInfo.CreditImg = CreditImg;
                 res = _userInfoBll.SaveOrUpdate(UserInfo);
             }
             return res;
         }
+
+        /// <summary>
+        /// 更新图片
+        /// </summary>
+        /// <param name="PostClass"></param>
+        /// <returns></returns>
+        //public object PhotoUpdate(PostClass PostClass)
+        //{
+        //    string name = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser).UserName;
+        //    bool res = false;
+        //    dynamic dy = Common.NewtonJsonHelper.Deserialize<dynamic>(PostClass.PostData.ToString(), null);
+        //    foreach (var item in dy)
+        //    {
+        //        object s = item;
+        //    }
+        //    string imgData = dy.dataUrl;
+        //    string imgUrl = dy.imgUrl;
+        //    string imgName = dy.dataName;
+        //    Base_UserInfo UserInfo = _userInfoBll.FindBy(t => t.UserName == name).ToList<Base_UserInfo>().FirstOrDefault();
+        //    if (UserInfo != null)
+        //    {
+        //        string photo = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
+        //        UserInfo.BusinessImg = photo;
+        //        res = _userInfoBll.SaveOrUpdate(UserInfo);
+        //    }
+        //    return res;
+        //}
         /// <summary>
         /// 上传图片获取图片路径
         /// </summary>
@@ -429,7 +495,8 @@ namespace HKCost.Controllers.Base
             dynamic dy = Common.NewtonJsonHelper.Deserialize<dynamic>(PostClass.PostData.ToString(), null);
             string imgData = dy.dataUrl;
             string imgUrl = dy.imgUrl;
-            string ImgUrl = Tools.ImgHelper.ImgUpload(imgData, imgUrl);
+            string imgName = dy.dataName;
+            string ImgUrl = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
             return ImgUrl;
         }
         /// <summary>
@@ -439,7 +506,7 @@ namespace HKCost.Controllers.Base
         public object GetUserMenuTree()
         {
             Base_UserInfo user = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser);
-            if (user==null)
+            if (user == null)
                 return null;
             string orgOID = user.Orgs.FirstOrDefault().OID;
             try
@@ -605,7 +672,7 @@ namespace HKCost.Controllers.Base
             if (user == null)
                 return new List<Base_ModuleInfo>();
             string orgOID = user.Orgs.FirstOrDefault().OID;
-            List<Base_ModuleInfo> moduleList=new List<Base_ModuleInfo>();
+            List<Base_ModuleInfo> moduleList = new List<Base_ModuleInfo>();
             //缓存Key值
             string cacheKey = user.OID + orgOID + "_UserAuthModule";
             //判断缓存是否存在
@@ -644,7 +711,7 @@ namespace HKCost.Controllers.Base
                     }
                     //Base_ModuleInfo item = null;
                     moduleList = moduleList.Where(op => op.Flag == flag).Where(op => op.ParentOID == parentModuleId.ToString()).ToList();
-                        //.Select(item => new { item.Name, item.PathHandler }).ToList();
+                    //.Select(item => new { item.Name, item.PathHandler }).ToList();
                 }
             }
             #endregion
@@ -676,7 +743,7 @@ namespace HKCost.Controllers.Base
         {
             StringBuilder sb = null;
             sb.Append("aaa");
-            return 1;           
+            return 1;
         }
         #endregion 
     }
