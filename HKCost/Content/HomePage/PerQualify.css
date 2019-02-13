@@ -8,3 +8,58 @@
     margin-top: 15px;
     margin-left: 70px;
 }
+
+table {
+    background-color: #FFF;
+    border: none;
+    color: #565;
+    font: 12px arial;
+}
+
+    table caption {
+        font-size: 24px;
+        border-bottom: 2px solid #B3DE94;
+        border-top: 2px solid #B3DE94;
+    }
+
+table, td, th {
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+tbody td, tbody th {
+    /*background-color: #30c5e7;*/
+    border-bottom: 2px solid #B3DE94;
+    border-top: 3px solid #FFFFFF;
+    padding: 9px;
+}
+
+
+tfoot td, tfoot th {
+    font-weight: bold;
+    padding: 4px 8px 6px 9px;
+    text-align: center;
+}
+
+thead th {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 19px;
+    padding: 0 8px 2px;
+    text-align: center;
+}
+
+/*
+    //odd就是偶数行
+tbody tr.odd th, tbody tr.odd td { 
+    background-color: #CEA;
+    border-bottom: 2px solid #67BD2A;
+}
+    //tr也有hover样式
+tbody tr:hover td, tbody tr:hover th { 
+    background-color: #8b7;
+    color: #fff;
+}
+*/

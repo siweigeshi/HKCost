@@ -259,6 +259,7 @@
                                     '/Scripts/Vendor/angular-sweetalert/SweetAlert.js',
                                     '/Scripts/App/Modules/common/sweetalert.min.js',
                                     '/Scripts/App/Modules/common/jquery-ui.min.js',
+                                    '/Scripts/app/modules/common/ajaxfileupload.js',
                                     '/Scripts/app/modules/inquirymanage/inquiry.controller.js',
                                     '/Scripts/app/modules/common/potting.table.directive.js',
                                     '/Scripts/app/modules/common/common.buttonsmenu.directive.js'
@@ -436,6 +437,41 @@
                                     '/Scripts/app/modules/common/ajaxfileupload.js',
                                     '/Scripts/app/modules/common/jquery.cookie.js',
                                     '/Scripts/app/modules/personmanage/PerQualify.controller.js',
+                                    '/Scripts/app/modules/common/potting.table.directive.js',
+                                    '/Scripts/app/modules/common/common.buttonsmenu.directive.js'
+                                ]
+                            }
+                        ]);
+                    }
+                ]
+            })
+            .state('SupplierManage', {
+                abstract: true,
+                url: '/SupplierManage',
+                title: '供应商资质管理',
+                resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'ngTable', 'ngDialog',
+                    'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl', 'oitozero.ngSweetAlert'),
+                views: {
+                    'content': {
+                        template: '<div data-ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="content-wrapper"></div>'
+                    }
+                }
+            })
+            .state('SupplierManage.SupQualify', {
+                url: '/SupQualify',
+                title: '资质管理',
+                templateUrl: '/view/SupplierManage/SupQualify.html',
+                resolve: [
+                    '$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                files: [
+                                    '/Scripts/Vendor/ng-table/dist/ng-table.min.js',
+                                    '/Scripts/Vendor/ngDialog/js/ngDialog.min.js',
+                                    '/Scripts/Vendor/angular-sweetalert/SweetAlert.js',
+                                    '/Scripts/App/Modules/common/sweetalert.min.js',
+                                    '/Scripts/App/Modules/common/jquery-ui.min.js',
+                                    '/Scripts/app/modules/suppliermanage/SupQualify.controller.js',
                                     '/Scripts/app/modules/common/potting.table.directive.js',
                                     '/Scripts/app/modules/common/common.buttonsmenu.directive.js'
                                 ]

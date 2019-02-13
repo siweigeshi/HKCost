@@ -471,7 +471,6 @@
     <Folder Include="Areas\ExtFrame\sass\var\" />
     <Folder Include="Scripts\Vendor\angular-ui-grid\less\" />
     <Folder Include="Scripts\Vendor\codemirror\mode\rpm\changes\" />
-    <Folder Include="Upload\" />
     <Folder Include="View\common\" />
   </ItemGroup>
   <ItemGroup>
@@ -578,6 +577,7 @@
     <Compile Include="Controllers\ParityManage\ParityController.cs" />
     <Compile Include="Controllers\QouteManage\QuoteController.cs" />
     <Compile Include="Controllers\QouteManage\QuoteManageController.cs" />
+    <Compile Include="Controllers\SupplierManage\SupQualifyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2045,7 +2045,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\common\animate.min.css" />
+    <Content Include="Content\common\images\index-close.png" />
     <Content Include="Content\common\images\ui-icons.png" />
+    <Content Include="Content\common\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\common\images\ui-icons_555555_256x240.png" />
     <Content Include="Content\common\jquery-ui.min.css" />
     <Content Include="Content\common\sweetalert.css" />
     <Content Include="Content\HomePage\dcalendar.picker.css" />
@@ -2062,6 +2065,7 @@
     <Content Include="Content\QuoteManage\QuoteManage.css" />
     <Content Include="Content\QuoteManage\Quote.css" />
     <Content Include="Content\ResultManage\ResultBulletin.css" />
+    <Content Include="Content\SupplierManage\Supplier.css" />
     <Content Include="Content\topnavbar\TopNavbar.css" />
     <Content Include="FakesAssemblies\Autofac.Integration.WebApi.3.4.0.0.Fakes.dll" />
     <Content Include="FakesAssemblies\Autofac.Integration.WebApi.3.4.0.0.Fakes.xml" />
@@ -2222,6 +2226,7 @@
     <Content Include="Scripts\App\Modules\sidebar\sidebar.module.js" />
     <Content Include="Scripts\App\Modules\sidebar\sidebar.service.js" />
     <Content Include="Scripts\App\Modules\sidebar\sidebar.userblock.controller.js" />
+    <Content Include="Scripts\App\Modules\suppliermanage\SupQualify.controller.js" />
     <Content Include="Scripts\App\Modules\System\system.dictionary.controller.js" />
     <Content Include="Scripts\App\Modules\System\system.module.controller.js" />
     <Content Include="Scripts\App\Modules\System\system.orginfo.controller.js" />
@@ -3222,6 +3227,11 @@
     <Content Include="Server\editor\source\css\style.css" />
     <Content Include="Server\editor\source\index.html" />
     <Content Include="Server\editor\source\js\script.js" />
+    <Content Include="Upload\user.jpg" />
+    <Content Include="Upload\中国电信_代理许可.png" />
+    <Content Include="Upload\中国电信_信用截图.png" />
+    <Content Include="Upload\中国电信_开户许可.png" />
+    <Content Include="Upload\中国电信_营业执照.png" />
     <Content Include="View\BaseCode\Position.html" />
     <Content Include="View\ButtonsMenu\ButtonsMenu.html" />
     <Content Include="View\Dashboard\DashboardV1.html" />
@@ -3254,6 +3264,7 @@
     <Content Include="View\QuoteManage\QuoteSheet.html" />
     <Content Include="View\ResultManage\ResultBulletin.html" />
     <Content Include="View\ResultManage\ResultBulletin2.html" />
+    <Content Include="View\SupplierManage\SupQualify.html" />
     <Content Include="View\System\ButtonInfo.html" />
     <Content Include="View\System\dictionary.html" />
     <Content Include="View\System\module.html" />

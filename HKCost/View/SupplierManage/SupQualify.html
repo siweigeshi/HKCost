@@ -1,0 +1,117 @@
+﻿<link rel='stylesheet prefetch' href='https://unpkg.com/ng-table/bundles/ng-table.min.css'>
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog-theme-default.min.css" rel="stylesheet" />
+<link href="/Scripts/Vendor/ngDialog/css/ngDialog.min.css" rel="stylesheet" />
+<link href="/Content/common/jquery-ui.min.css" rel="stylesheet" />
+<link href="/Content/common/sweetalert.css" rel="stylesheet" />
+<link href="/Content/SupplierManage/Supplier.css" rel="stylesheet" />
+
+<div class="content-heading">
+    资质管理
+</div>
+<!--主页面开始-->
+<div class="row task panel panel-default" ng-controller="SupplierController" id="tablePanel">
+    <div class="serach">
+        <div class="serachLeft">
+            <div class="form-inline col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    <select class="form-control" ng-model="searchField">
+                        <option value="USERNAME">供应商名称</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入搜索关键字" ng-model="searchValue">
+                </div>
+                <div class="checkbox">
+                    <button class="btn btn-default btn-success" ng-click="search()">查询</button>
+                    <button class="btn btn-default btn-default" ng-click="reset()">重置</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <ng-table></ng-table>
+</div>
+<!--主页面结束-->
+<!--复选框开始-->
+<script type="text/ng-template" id="headerCheckbox.html">
+    <div class="checkbox c-checkbox">
+        <label>
+            <input type="checkbox" class="select-all" value="" ng-model="checkboxes.checked" />
+            <span class="fa fa-check"></span>
+        </label>
+    </div>
+</script>
+<!--复选框结束-->
+<!-- 显示页面的表格开始-->
+<script type="text/ng-template" id="table.html">
+    <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+        <colgroup>
+            <col width="3%" />
+            <col width="5%" />
+            <col width="15%" />
+            <col width="10%" />
+            <col width="10%" />
+            <col width="10%" />
+            <col width="10%" />
+            <col width="15%" />
+
+
+        </colgroup>
+        <tr ng-repeat="Supplier in $data" class="taskTr">
+            <td header="'headerCheckbox.html'">
+                <div class="checkbox c-checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checkboxes.items[Supplier.OID]" />
+                        <span class="fa fa-check"></span>
+                    </label>
+                </div>
+            </td>
+            <td data-title="'序号'">{{$index+1}}</td>
+            <td data-title="'供应商名称'" sortable="'UserName'" ng-click="look($index)">{{Supplier.UserName}}</td>
+            <td data-title="'营业执照'">
+                <img ng-src="{{Supplier.BusinessImg}}" style="max-width:120px;max-height:120px;display:block;" ng-click="changePic($event)">
+                <div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()">
+                </div>
+                <div id="js-imgview" class="show-img">
+                    <img id="bigimage">
+                    <a ng-click="closePic()"> </a>
+                </div>
+            </td>
+            <td data-title="'开户许可'" ng-click="look($index)">
+                <img ng-src="{{Supplier.OpenImg}}" style="max-width:120px;max-height:120px;display:block;" ng-click="changePic($event)">
+                <div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()">
+                </div>
+                <div id="js-imgview" class="show-img">
+                    <img id="bigimage">
+                    <a ng-click="closePic()"></a>
+                </div>
+            </td>
+            <td data-title="'代理授权书'" ng-click="look($index)">
+                <img ng-src="{{Supplier.AgentImg}}" style="max-width:120px;max-height:120px;display:block;" ng-click="changePic($event)">
+                <div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()">
+                </div>
+                <div id="js-imgview" class="show-img">
+                    <img id="bigimage">
+                    <a ng-click="closePic()"></a>
+                </div>
+            </td>
+            <td data-title="'网站截图'" ng-click="look($index)">
+                <img ng-src="{{Supplier.CreditImg}}" style="max-width:120px;max-height:120px;display:block;" ng-click="changePic($event)">
+                <div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()">
+                </div>
+                <div id="js-imgview" class="show-img">
+                    <img id="bigimage">
+                    <a ng-click="closePic()"></a>
+                </div>
+            </td>
+            <td data-title="'操作'" class="middle">
+                <button class="btn btn-default btn-success" ng-click="ReviewPass($index,1)" ng-if="ReviewTrue[$index]">审核通过</button>
+                <button class="btn btn-default btn-warning" ng-click="ReviewPass($index,3)" ng-if="ReviewFalse[$index]">拒绝</button>
+                <button class="btn btn-default btn-primary" disabled ng-if="Review[$index]">已通过</button>
+                <button class="btn btn-default btn-danger" disabled ng-if="ReviewNoPass[$index]">已拒绝</button>
+            </td>
+        </tr>
+    </table>
+</script>
+<!-- 显示页面的表格结束-->
+ 

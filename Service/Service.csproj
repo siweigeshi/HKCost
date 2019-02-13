@@ -69,6 +69,7 @@
     <Compile Include="Implements\ParityManage\ParityBLL.cs" />
     <Compile Include="Implements\QouteManage\QuoteBLL.cs" />
     <Compile Include="Implements\QouteManage\QuoteManageBLL.cs" />
+    <Compile Include="Implements\SupplierManage\SupQualifyBLL.cs" />
     <Compile Include="Implements\UserManager\UserManagerBLL.cs" />
     <Compile Include="Interfaces\BaseCode\IBaseCodeBLL.cs" />
     <Compile Include="Interfaces\Core\IBasePositionBLL.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Interfaces\ParityManage\IParityBLL.cs" />
     <Compile Include="Interfaces\QuoteManage\IQuoteBLL.cs" />
     <Compile Include="Interfaces\QuoteManage\IQuoteManageBLL.cs" />
+    <Compile Include="Interfaces\SupplierManage\ISupQualifyBLL.cs" />
     <Compile Include="Interfaces\UserManger\IUserManagerBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

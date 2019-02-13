@@ -39,6 +39,10 @@ namespace Domain.CostSystem
         /// </summary>
         public virtual string GoodsCode { get; set; }
         /// <summary>
+        /// 询价表地址
+        /// </summary>
+        public virtual string InquiryWord { get; set; }
+        /// <summary>
         /// 采购量
         /// </summary>
         public virtual int BuyNumber { get; set; }
@@ -123,6 +127,7 @@ namespace Domain.CostSystem
             Map(x => x.SpecifiModel);
             Map(x => x.GoodsDescrip);
             Map(x => x.GoodsCode);
+            Map(x => x.InquiryWord);
             Map(x => x.BuyNumber);
             Map(x => x.Uints);
             Map(x => x.STATE);

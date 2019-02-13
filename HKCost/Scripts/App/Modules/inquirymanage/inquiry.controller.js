@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-   
-    angular.module('Inquiry', []).controller('InquiryController', InquiryController).factory('InquiryService', InquiryService);
+
+    angular.module('Inquiry', ['angularFileUpload']).controller('InquiryController', InquiryController).factory('InquiryService', InquiryService);
 
     InquiryService.$inject = ['$http'];//创建工厂类注入注册的服务，依赖注入http服务
     function InquiryService($http) {
@@ -26,8 +26,8 @@
     }
     //$inject生成一个依赖数组
     //$uibModal模态框的注入
-    InquiryController.$inject = ['$scope', 'Notify', '$filter', '$resource', '$timeout', "$element", 'ngTableParams', '$http', 'ngDialog', '$uibModal', 'SweetAlert', 'InquiryService'];
-    function InquiryController($scope, Notify, $filter, $resource, $timeout, $element, ngTableParams, $http, ngDialog, $uibModal, SweetAlert, InquiryService) {
+    InquiryController.$inject = ['$scope', 'Notify', '$filter', '$resource', '$timeout', "$element", 'ngTableParams', '$http', 'ngDialog', '$uibModal', 'SweetAlert', 'InquiryService', 'FileUploader'];
+    function InquiryController($scope, Notify, $filter, $resource, $timeout, $element, ngTableParams, $http, ngDialog, $uibModal, SweetAlert, InquiryService, FileUploader) {
         //js开始
 
         $scope.status = [];//存放询价单状态
@@ -67,7 +67,7 @@
                 return $scope.BuyCompanyName;
             }
         }
-       
+
         //获取当前用户
         InquiryService.GetUserName().success(function (username) {
             user = username;
@@ -117,12 +117,12 @@
                         $scope.isEdit[i] = false;
                     }
                     if (data.inquiryList[i].BuyState == 1) {   //隐藏删除按钮（当询价单处于询价中状态是 不能删除）
-                        $scope.isDelete[i] = false;
+                        $scope.isDelete[i] = true;
                     }
                 }
             });
         }
- 
+
         //查看方法
         $scope.lookInquirySheet = function (index) {
             var lookModal = $uibModal.open({
@@ -137,34 +137,78 @@
             });
         }
 
+
+
+        //$scope.upload = function (file) {
+        //    $scope.fileInfo = file;
+        //    Upload.upload({
+        //        //服务端接收
+        //        url: '/api/Inquiry/PostFiles',
+        //        //上传的同时带的参数
+        //        data: { 'username': $scope.InquirySheets.InquiryTitle },
+        //        file: file
+        //    }).progress(function (evt) {
+        //        //进度条
+        //        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+        //        console.log('progess:' + progressPercentage + '%' + evt.config.file.name);
+        //    }).success(function (data, status, headers, config) {
+        //        //上传成功
+        //        console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+        //        $scope.uploadImg = data;
+        //    }).error(function (data, status, headers, config) {
+        //        //上传失败
+        //        console.log('error status: ' + status);
+        //    });
+        //};
+
         //删除方法
         $scope.delete = function (OID) {
-                SweetAlert.swal({
-                    title: '确定删除吗？',
-                    text: '删除后您将不能恢复选中的询价单',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#DD6B55',
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    closeOnConfirm: false
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                        InquiryService.PostInquiryDelete(OID).success(function () {
+            SweetAlert.swal({
+                title: '确定删除吗？',
+                text: '删除后您将不能恢复选中的询价单',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                closeOnConfirm: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    InquiryService.PostInquiryDelete(OID).success(function () {
 
-                            SweetAlert.swal('删除成功!', '选中询价单已被删除', 'success');
-                            loadTable();
-                        });
-                    }
-                });
+                        SweetAlert.swal('删除成功!', '选中询价单已被删除', 'success');
+                        loadTable();
+                    });
+                }
+            });
         }
         //增加询价单
         $scope.addSheet = function (index) {
             var modalInstance = $uibModal.open({
                 templateUrl: 'AddModal',//模态框的连接
-                controller: function ($scope, $uibModalInstance, $timeout) {
+                controller: function ($scope, $uibModalInstance, $timeout, FileUploader) {
+                    var formDatas = [];
+                    if (index!=-1) {
+                        formDatas = [{ name: tableList[index].InquiryTitle }];
+                    }
+                    var uploader = $scope.uploader = new FileUploader({
+                        url: '/api/Inquiry/PostFiles',
+                        formData: formDatas
+                
+                    });
+                    $scope.clearItems = function () {    //重新选择文件时，清空队列，达到覆盖文件的效果
+                        uploader.clearQueue();
+                    };
+                    uploader.onAfterAddingFile = function (fileItem) {
+                        $scope.fileItem = fileItem._file;    //添加文件之后，把文件信息赋给scope
+                        //$scope.fileItem.append("name", tableList[index].InquiryTitle);
+                    };
+                    uploader.onSuccessItem = function (fileItem, response, status, headers) {
+                        $scope.uploadStatus = true;   //上传成功则把状态改为true
+                    };
+
                     if (index != -1) {
-                        $scope.InquirySheets = eval('(' + JSON.stringify(tableList[index]) +')')
+                        $scope.InquirySheets = eval('(' + JSON.stringify(tableList[index]) + ')')
                     }
                     else {
                         $timeout(function () {
@@ -210,18 +254,26 @@
                     //    }
                     //}
                     $scope.submit = function () {
+                        uploader.uploadAll();
+                        //upload($scope.file);
                         var model = {};
                         model = $scope.InquirySheets;
                         model.BuyState = 1;
+
                         InquiryService.PostInquirySave(model).success(function (data) {
-                            if (index==-1) {
-                                SweetAlert.swal('创建成功', '采购单创建成功', 'success');
+                            if (data) {
+                                if (index == -1) {
+                                    SweetAlert.swal('创建成功', '采购单创建成功', 'success');
+                                }
+                                else {
+                                    SweetAlert.swal('修改成功', '采购单修改成功', 'success');
+                                }
+                                $uibModalInstance.close('closed');
+                                loadTable();
                             }
                             else {
-                                SweetAlert.swal('修改成功', '采购单修改成功', 'success');
+                                SweetAlert.swal('新增或修改失败', '采购单增加或修改失败', 'danger');
                             }
-                            $uibModalInstance.close('closed');
-                            loadTable();
                         });
                     }
                     $scope.cancel = function () {

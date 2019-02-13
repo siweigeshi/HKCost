@@ -20,6 +20,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace HKCost.Controllers.Base
 {
@@ -50,15 +51,21 @@ namespace HKCost.Controllers.Base
         #endregion
 
         #region 业务方法(基础)
-        
+
         /// <summary>
         /// 获取用户信息
         /// </summary>
         /// <returns></returns>
         public object GetUserMess()
         {
-            Base_UserInfo _UserInfo = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser);
-            return _UserInfo;
+            string userName = Tools.SessionHelper.GetSession<Base_UserInfo>(Tools.SessionHelper.SessinoName.CurUser).UserName;
+            List<string> igorelist = new List<string>() { "Orgs", "Roles" };
+            Base_UserInfo UserInfo = _userInfoBll.FindBy(t => t.UserName == userName).ToList<Base_UserInfo>().FirstOrDefault();
+            if (UserInfo != null)
+            {
+                return Common.NewtonJsonHelper.Deserialize<object>(NewtonJsonHelper.Serialize(UserInfo, igorelist), null);
+            }
+            return Common.NewtonJsonHelper.Deserialize<object>(NewtonJsonHelper.Serialize("{}", null), null);
         }
 
         /// <summary>
@@ -71,7 +78,17 @@ namespace HKCost.Controllers.Base
         {
             return _userInfoBll.SaveOrUpdate(PostClass);
         }
-
+        /// <summary>
+        /// 修改用户信息
+        /// </summary>
+        /// <param name="PostClass"></param>
+        /// <returns></returns>
+        public bool PostUpdate(Base_UserInfo PostClass)
+        {
+            Base_UserInfo UserInfo = _userInfoBll.FindBy(t => t.UserName == PostClass.UserName).ToList<Base_UserInfo>().FirstOrDefault();
+            UserInfo.IsActive = PostClass.IsActive;
+            return _userInfoBll.SaveOrUpdate(UserInfo);
+        }
         /// <summary>
         /// 查询用户名是否相同
         /// </summary>
@@ -409,6 +426,7 @@ namespace HKCost.Controllers.Base
         }
         #endregion
         #region 业务扩展方法
+     
         /// <summary>
         /// 更新图片
         /// </summary>
@@ -430,6 +448,8 @@ namespace HKCost.Controllers.Base
                 string imgData = item.dataUrl;
                 string imgUrl = item.imgUrl;
                 string imgName = item.dataName;
+                if (item.dataUrl == null)
+                    continue;
                 if (imgName.Substring(imgName.Length - 4, 4) == "营业执照")
                 {
                     BusinessImg = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
@@ -446,6 +466,7 @@ namespace HKCost.Controllers.Base
                 {
                     CreditImg = Tools.ImgHelper.ImgUpload(imgData, imgUrl, imgName);
                 }
+
             }
             Base_UserInfo UserInfo = _userInfoBll.FindBy(t => t.UserName == name).ToList<Base_UserInfo>().FirstOrDefault();
             if (UserInfo != null)
@@ -454,6 +475,7 @@ namespace HKCost.Controllers.Base
                 UserInfo.OpenImg = OpenImg;
                 UserInfo.AgentImg = AgentImg;
                 UserInfo.CreditImg = CreditImg;
+                UserInfo.IsActive = 0;
                 res = _userInfoBll.SaveOrUpdate(UserInfo);
             }
             return res;
@@ -745,6 +767,12 @@ namespace HKCost.Controllers.Base
             sb.Append("aaa");
             return 1;
         }
+        ///获取图片信息（未使用）
+        //public object GetImg()
+        //{
+        //    Image image2 = Image.FromFile("D:\\HKwork\\HKCost\\HKCost\\Upload\\user.jpg");
+        //    return image2;
+        //}
         #endregion 
     }
 }

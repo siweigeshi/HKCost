@@ -80,22 +80,24 @@
                 tableList = data.QuoteManageList;
                 $defer.resolve(data.QuoteManageList);//$ defer是用于解析依赖关系和呈现最终数据的promise对象。
                 func(data.QuoteManageList);//数据刷新
-                for (var i = 0; i < data.QuoteManageList.length; i++) {
-                 
-                    if (data.QuoteManageList[i].QuoteState == 3) {
-                        $scope.status[i] = "报价失败";
-                        $scope.isEdit[i] = false;
-                        $scope.isDelete[i] = true;
-                    }
-                    else if (data.QuoteManageList[i].QuoteState == 2) {
-                        $scope.status[i] = "报价成功";
-                        $scope.isEdit[i] = false;
-                        $scope.isDelete[i] = true;
-                    }
-                    else {
-                        $scope.status[i] = "已报价";
-                        $scope.isEdit[i] = true;
-                        $scope.isDelete[i] = false;
+                if (data.QuoteManageList != undefined) {
+                    for (var i = 0; i < data.QuoteManageList.length; i++) {
+
+                        if (data.QuoteManageList[i].QuoteState == 3) {
+                            $scope.status[i] = "报价失败";
+                            $scope.isEdit[i] = false;
+                            $scope.isDelete[i] = true;
+                        }
+                        else if (data.QuoteManageList[i].QuoteState == 2) {
+                            $scope.status[i] = "报价成功";
+                            $scope.isEdit[i] = false;
+                            $scope.isDelete[i] = true;
+                        }
+                        else {
+                            $scope.status[i] = "已报价";
+                            $scope.isEdit[i] = true;
+                            $scope.isDelete[i] = false;
+                        }
                     }
                 }
             });

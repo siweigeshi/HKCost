@@ -5,47 +5,47 @@
 <link href="/Content/common/sweetalert.css" rel="stylesheet" />
 <link href="/Content/HomePage/PerQualify.css" rel="stylesheet" />
 
- 
+
 <div class="content-heading">
     企业资质认证
 </div>
 <!--主页面开始-->
 <div class="row task panel panel-default" ng-controller="PerQualifyController" id="tablePanel">
 
-
+    <h2 style="color:red">注意事项：</h2>
     <h3 style="color:red">请供应商提交资质信息便于系统审核,如果提交的材料有任何伪造、修改、虚假等成份,造成的后果由已方自行承担；</h3>
 
-    <h4>1、请在①处上传 三证合一的营业执照副本 加盖公章的复印件。</h4>
-    <h4>2、请在②处上传 代理产品的代理证明 加盖公章的复印件。</h4>
-    <h4>3、请在③处上传 公司开户许可证 加盖公章的复印件。</h4>
+    <h4>1、请在①处上传 "三证合一的营业执照副本" 加盖公章的复印件。</h4>
+    <h4>2、请在②处上传 "代理产品的代理证明" 加盖公章的复印件。</h4>
+    <h4>3、请在③处上传 "公司开户许可证" 加盖公章的复印件。</h4>
     <h4>4、请在④处上传 “信用中国”网站（www.creditchina.gov.cn）查询”无不良信用记录的查询截图 。</h4>
-
-    <table class="table table-condensed table-bordered table-striped table-hover " id="ss">
-        <tr>
-            <th>      <span style="color:red">①上传营业执照</span>   <input type="file" nv-file-select="" uploader="uploaderYZ" />  </th>
-            <th>      <span style="color:red">②上传代理许可</span>   <input type="file" nv-file-select="" uploader="uploaderDL" /> </th>
-        </tr>
-        <tr>
-            <td>   <img id="img-preview" ng-src="{{iconUrlYZ}}" style="max-width:300px;max-height:300px;display:block;">   </td>
-            <td>     <img id="img-preview" ng-src="{{iconUrlDL}}" style="max-width:300px;max-height:300px;display:block;">  </td>
-        </tr>
-        <tr></tr>
-        <tr>
-            <th>          <span style="color:red">③上传开户许可</span>  <input type="file" nv-file-select="" uploader="uploaderKH" />  </th>
-            <th>         <span style="color:red">④上传信用截图</span>   <input type="file" nv-file-select="" uploader="uploaderXY" /> </th>
-        </tr>
-        <tr>
-            <td>     <img id="img-preview" ng-src="{{iconUrlKH}}" style="max-width:300px;max-height:300px;display:block;">  </td>
-            <td>      <img id="img-preview" ng-src="{{iconUrlXY}}" style="max-width:300px;max-height:300px;display:block;">  </td>
-        </tr>
-    </table>
-    <br />
-    <div style="text-align:center">
-        <button class="btn btn-default btn-success" ng-click="subPoatImg()">上传</button>
-    </div>
-   
-    <!--<input id="Button1" type="button" value="上传" ng-click="subPoatImg()" />-->
-    <!--<div class="col-xs-12 col-sm-4 col-md-2 ">
+    <h5 style="color:red">请上传小于1M以下的图片，上传成功会有预览图即为图片合格(请上传BMP、JPG、PNG文件)</h5>
+        <table class="table table-condensed table-bordered table-striped table-hover " id="ss">
+            <tr>
+                <th>      <span style="color:red;">①上传营业执照</span>   <input type="file" nv-file-select="" uploader="uploaderYZ" />  </th>
+                <th>      <span style="color:red">②上传代理许可</span>   <input type="file" nv-file-select="" uploader="uploaderDL" /> </th>
+            </tr>
+            <tr>
+                <td>   <img id="img-preview" ng-src="{{iconUrlYZ}}"   style="max-width:300px;max-height:300px;display:block;">   </td>
+                <td>     <img id="img-preview" ng-src="{{iconUrlDL}}" style="max-width:300px;max-height:300px;display:block;">  </td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <th>          <span style="color:red">③上传开户许可</span>  <input type="file" nv-file-select="" uploader="uploaderKH" />  </th>
+                <th>         <span style="color:red">④上传信用截图</span>   <input type="file" nv-file-select="" uploader="uploaderXY" /> </th>
+            </tr>
+            <tr>
+                <td>     <img id="img-preview" ng-src="{{iconUrlKH}}" style="max-width:300px;max-height:300px;display:block;">  </td>
+                <td>      <img id="img-preview" ng-src="{{iconUrlXY}}" style="max-width:300px;max-height:300px;display:block;">  </td>
+            </tr>
+        </table>
+        <br />
+        <div style="text-align:center">
+            <button class="btn btn-default btn-success" ng-click="subPoatImg()">上传</button>
+        </div>
+        <br />
+        <!--<input id="Button1" type="button" value="上传" ng-click="subPoatImg()" />-->
+        <!--<div class="col-xs-12 col-sm-4 col-md-2 ">
         <div class="image">
             <img ng-src="{{Model.Image}}" id="File" onerror="javascript: this.src = '/Images/user/user.jpg';" class="linkImg">
         </div>
@@ -57,13 +57,14 @@
     </div>
     <div class="modal fade" id="TeacherInfoModal"></div>-->
 
-    <ng-table></ng-table>
+        <ng-table></ng-table>
 </div>
 <!--主页面结束-->
- 
 <!-- 显示页面的表格开始-->
 <script type="text/ng-template" id="table.html">
-    <table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">
+    <!--<table ng-table="parentTableParams" class="table table-condensed table-bordered table-striped table-hover ">-->
+    <!--<table class="table table-condensed table-bordered table-striped table-hover ">
+
         <colgroup>
             <col width="2%" />
             <col width="4%" />
@@ -76,14 +77,36 @@
             <col width="12%" />
         </colgroup>
         <tr class="taskTr">
-            
-          
-            <td data-title="'用户名'" sortable="'InquiryTitle'" ng-click="look($index)">{{UserMess.USERNAME}}</td>
+            <td data-title="'用户名'" sortable="'InquiryTitle'" ng-click="look($index)">{{UserMess.UserName}}</td>
             <td data-title="'报价人'" sortable="'BuyCompanyName'" ng-click="look($index)">{{UserMess.BusinessImg}}</td>
-            
-            <td data-title="'报价时间'" sortable="'CREATETIME'" ng-click="look($index)">{{UserMess.CREATETIME}}</td>
-          
+            <td data-title="'报价时间'" sortable="'CREATETIME'" ng-click="look($index)">{{UserMess.CreateTime}}</td>
+
         </tr>
+    </table>-->
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <caption style="text-align:center">资质审核状态</caption>
+        <thead>
+            <tr>
+                <th>用户名</th>
+                <th>邮箱</th>
+                <th  style="color:red">审核状态</th>
+                <!--<th>拒绝理由</th>-->
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{UserMess.UserName}}</td>
+                <td>{{UserMess.EMAIL}}</td>
+                <td ng-if="status==0" style="color:blueviolet">未审核</td>
+                <td ng-if="status==1" style="color:#27C24C">已审核通过</td>
+                <td ng-if="status==3" style="color:red">被拒绝，请重新审查后提交</td>
+                <!--<td style="color:red">{{status}}</td>
+    <td style="color:darkgreen" ng-if="ReviewStatus[$index]">{{status}}</td>-->
+                <!--<td data-title="'审核状态'" style="color:red" ng-click="look($index)">{{status[$index]}}</td>-->
+                <!--<td>{{UserMess.DeMess}}</td>-->
+            </tr>
+        </tbody>
     </table>
 </script>
 <!-- 显示页面的表格结束-->

@@ -1,4 +1,5 @@
 ﻿using BLL.Implements.Base;
+using Common.CommonClass;
 using Common.QueryHelper;
 using DAL.Implements.Base;
 using Domain.Core;
@@ -17,6 +18,8 @@ namespace Service.Implements.InquiryManage
         #region  构造函数
         public InquiryBLL(UnitOfWork _uow) : base(_uow) { }
         #endregion
+
+       
         /// <summary>
         /// 获取询价单数据
         /// </summary>

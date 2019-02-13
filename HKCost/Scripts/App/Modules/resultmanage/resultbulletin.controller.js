@@ -68,16 +68,12 @@
                 tableList = data.QuoteResultList;
                 $defer.resolve(data.QuoteResultList);//$ defer是用于解析依赖关系和呈现最终数据的promise对象。
                 func(data.QuoteResultList);//数据刷新
-                for (var i = 0; i < data.QuoteResultList.length; i++) {
-                    if (data.QuoteResultList[i].QuotationCompany == user) {
-                        //$('#CompanyClass ng-binding').addClass('color:red;');
-                        //var elm = document.getElementById('CompanyClass');
-                        //if (elm.textContent == user)
-                        //    elm.style.color = 'red';
-                     
+                if (data.QuoteResultList != undefined) {
+                    for (var i = 0; i < data.QuoteResultList.length; i++) {
+                        if (data.QuoteResultList[i].QuotationCompany == user) {
+                        }
                     }
                 }
-               
             });
         }
 

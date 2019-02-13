@@ -54,12 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExecSqlHelp.cs" />
+    <Compile Include="FileHelper.cs" />
     <Compile Include="GetCookie.cs" />
     <Compile Include="ImgHelper.cs" />
     <Compile Include="JudgeSqlInjection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueFactory.cs" />
     <Compile Include="SessionHelper.cs" />
+    <Compile Include="ZipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReadMe.xml" />

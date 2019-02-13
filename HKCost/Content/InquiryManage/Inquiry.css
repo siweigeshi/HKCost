@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+ 
 body {
     font-family: '微软雅黑';
     font-size: 14px;
@@ -158,4 +159,3 @@ fieldset {
 .table tbody td .ng-binding {
     text-align: center;
 }
-

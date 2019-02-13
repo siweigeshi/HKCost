@@ -29,9 +29,7 @@
             </div>
             <div class="btn-menu">
                 <button class="btn btn-default btn-success add" data-toggle="modal" ng-click="addSheet(-1)">新增</button>
-                <!--<button class="btn btn-default btn-primary look" ng-click="submit(-1)" disabled>提交</button> 
-                <button class="btn btn-default btn-danger del" ng-click="delete(-1)">批量删除</button>
-                <!--<button class="btn btn-default btn-primary edit" ng-click="save(-2)">修改</button>-->
+
             </div>
         </div>
     </div>
@@ -169,7 +167,7 @@
         <h4 class="modal-title" id="myModalLabel">增加询价单</h4>
     </div>
     <div class="modal-body">
-        <form name="myForm">
+        <form name="myForm" id="uploadForm">
             <div class="form-group">
                 <label>询价标题<i class="am-text-danger">*</i></label>
                 <span ng-show="name" style="color:red">输入框不能为空</span>
@@ -194,13 +192,13 @@
                 <div class="col-md-6 col-sm-6">
                     <label class="am-block">询价开始时间<i class="am-text-danger">* 开始时间不能为空</i></label>
                     <!--<span ng-show="startTime" style="color:red">&nbsp;&nbsp;&nbsp;开始时间不能为空</span>-->
-                    <input class="form-control datepicker" readonly type="text" required ng-model="InquirySheets.StartTime"    />
+                    <input class="form-control datepicker" readonly type="text" required ng-model="InquirySheets.StartTime" />
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label class="am-block">询价截止时间<i class="am-text-danger">* 结束时间不能为空</i></label>
                     <!--<span ng-show="finTime" style="color:red">&nbsp;&nbsp;&nbsp;结束时间不能为空</span>-->
                     <input class="form-control datepicker" name="endTime"
-                           required type="text" readonly ng-model="InquirySheets.EndTime"   />
+                           required type="text" readonly ng-model="InquirySheets.EndTime" />
                 </div>
             </div>
             <div class="form-group">
@@ -215,7 +213,7 @@
                 <div class="col-md-6 col-sm-6">
                     <label class="am-block">货物名称<i class="am-text-danger">*</i></label>
                     <!--<span ng-show="name" style="color:red">&nbsp;&nbsp;&nbsp;输入框不能为空</span>-->
-                    <input class="form-control" placeholder="请输入货物名称" type="text" required ng-model="InquirySheets.GoodsName"  />
+                    <input class="form-control" placeholder="请输入货物名称" type="text" required ng-model="InquirySheets.GoodsName" />
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label class="am-block">货物编码<i class="am-text-danger">*</i></label>
@@ -243,6 +241,15 @@
                 <!--<span ng-show="name" style="color:red">&nbsp;&nbsp;&nbsp;输入框不能为空</span>-->
                 <textarea class="form-control" rows="3" ng-model="InquirySheets.GoodsDescrip" placeholder="添加描述..." required>></textarea>
             </div>
+            <div class="form-group">
+        <label>上传报价表模板<i class="am-text-danger">*</i></label>
+        <input type="file" accept="application/msword" nv-file-select="" uploader="uploader"  ng-click="clearItems()" />
+    </div>
+
+            <!--<div class="button" ngf-select ng-model="file" name="file"  ngf-max-size="20MB" ngf-min-height="100">Select</div>-->
+            <!--<p>指定文件名： <input type="text" name="filename" value="" /></p>
+    <p>上传文件： <input type="file" name="file" /></p>
+    <input type="button" value="上传" ng-click="doUpload()" />-->
         </form>
     </div>
 
